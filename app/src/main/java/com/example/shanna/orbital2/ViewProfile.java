@@ -59,7 +59,7 @@ public class ViewProfile extends AppCompatActivity {
         setContentView(R.layout.activity_profile_view);
 
         //For the user_clients to lead to the correct ViewProfile
-        String user_id = getIntent().getStringExtra("user_id");
+        final String user_id = getIntent().getStringExtra("user_id");
         mDisplayID = (TextView) findViewById(R.id.profile_displayID);
         mDisplayID.setText(user_id);
 
@@ -87,7 +87,7 @@ public class ViewProfile extends AppCompatActivity {
         String current_uid = mCurrentUser.getUid();
 
         //first set the value inside the text boxes to contain information that was set previously
-        mDatabase.child("Users").child(current_uid).addValueEventListener(new ValueEventListener() {
+        mDatabase.child("Users").child(user_id).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
@@ -125,6 +125,7 @@ public class ViewProfile extends AppCompatActivity {
             public void onClick(View v) {
                 //by right should lead to Chat.java. But currently Chat.java not done, so lead to Main
                 Intent intent = new Intent(ViewProfile.this, Collaborate.class);
+                intent.putExtra("user_id", user_id);
                 startActivity(intent);
             }
         });

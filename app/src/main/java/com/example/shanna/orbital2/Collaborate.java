@@ -8,6 +8,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -21,11 +22,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Collaborate extends AppCompatActivity {
 
-    private EditText mEditTextPartner;
     private EditText mEditTextChanges;
     private EditText mEditTextQuote;
     private EditText mEditTextDeadline;
@@ -40,12 +41,13 @@ public class Collaborate extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_collaborate);
 
-        mEditTextPartner = findViewById(R.id.editText);
         mEditTextChanges = findViewById(R.id.editText6);
         mEditTextQuote = findViewById(R.id.editText9);
         mEditTextDeadline = findViewById(R.id.editText7);
         mEditTextWait = findViewById(R.id.editText8);
         mBtnCollaborate = findViewById(R.id.button2);
+
+        final String user_id = getIntent().getStringExtra("user_id");
 
         auth = FirebaseAuth.getInstance();
 
@@ -53,26 +55,18 @@ public class Collaborate extends AppCompatActivity {
         mBtnCollaborate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final String partner = mEditTextPartner.getText().toString().trim(); //get from textbox
                 final String numChanges = mEditTextChanges.getText().toString().trim(); //get from textbox
                 final String baseQuotation = mEditTextQuote.getText().toString().trim(); //get from textbox
                 final String deadline = mEditTextDeadline.getText().toString().trim(); //get from textbox
                 final String bufferWait = mEditTextWait.getText().toString().trim(); //get from textbox
 
-                // Check if email is empty
-                if (TextUtils.isEmpty(partner)) {
-                    Toast.makeText(Collaborate.this, "Enter client username", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-
-                // check if username is empty
+                // check if changes is empty
                 if (TextUtils.isEmpty(numChanges)) {
                     Toast.makeText(Collaborate.this, "Enter max number of changes", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                // check if full name is empty
+                // check if quotation is empty
                 if (TextUtils.isEmpty(baseQuotation)) {
                     Toast.makeText(Collaborate.this, "Enter base quotation", Toast.LENGTH_SHORT).show();
                     return;
@@ -92,22 +86,27 @@ public class Collaborate extends AppCompatActivity {
 
                 // project data
                 final HashMap<String, Object> projectMap = new HashMap<>();
-                projectMap.put("Partner", partner);
+                projectMap.put("Partner1", auth.getCurrentUser().getUid());
+                projectMap.put("Partner2", user_id);
                 projectMap.put("MaxChanges", numChanges);
                 projectMap.put("BaseQuote", baseQuotation);
                 projectMap.put("Deadline", deadline);
                 projectMap.put("WaitingTime", bufferWait);
 
+                // create new branch under user_id (partner2) to store collab details
+                FirebaseDatabase.getInstance().getReference().child(user_id).setValue(projectMap);
+
+
                 // add data to current user
                 FirebaseUser current_user = auth.getCurrentUser();
                 String uidCurrent = current_user.getUid();
-                mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(uidCurrent);
-                mDatabase.updateChildren(projectMap); //putting hashmap into the database for the particular user
+                mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(uidCurrent).child("Projects");
+                mDatabase.updateChildren(); //putting hashmap into the database for the particular user
 
+                // current project reference id
+                final String project_id =
 
-                FirebaseUser partner_user = auth.
-
-                projectMap.put("Partner", current_user.getEmail());
+               /* projectMap.put("Partner", current_user.getEmail());
                 // add data to partner
                 final DatabaseReference mRef = FirebaseDatabase.getInstance().getReference().child("users");
                 Query query = mRef.orderByChild("Email").equalTo(partner);
@@ -123,7 +122,7 @@ public class Collaborate extends AppCompatActivity {
                     public void onCancelled(@NonNull DatabaseError databaseError) {
                         Toast.makeText(Collaborate.this, "Collaboration unsuccessful! Please try again.", Toast.LENGTH_LONG).show();
                     }
-                });
+                });*/
 
                 startActivity(new Intent(Collaborate.this, MainActivity.class));
                 finish();

@@ -25,6 +25,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 //alt+enter to import automatically
 
@@ -148,7 +149,7 @@ public class SignupActivity extends AppCompatActivity {
 
                                     mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(uid);
 
-                                    HashMap<String,String> userMap = new HashMap<>();
+                                    HashMap<String,Object> userMap = new HashMap<>();
                                     userMap.put("FullName", fullName);
                                     userMap.put("UserName", username);
                                     userMap.put("PhoneNum", phoneNum);
@@ -161,6 +162,7 @@ public class SignupActivity extends AppCompatActivity {
                                     userMap.put("Description", "Enter Description");
                                     userMap.put("Website", "Enter Website");
                                     userMap.put("UserType", "Enter UserType");
+                                    userMap.put("Projects", new ArrayList<String>());
 
                                     mDatabase.setValue(userMap); //putting hashmap into the database for the particular user
 
