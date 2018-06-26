@@ -23,6 +23,7 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.android.support.constraint:constraint-layout:1.1.0'
     implementation 'com.google.firebase:firebase-core:16.0.0'
+    implementation 'com.android.support:support-v4:27.1.1'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
@@ -35,6 +36,30 @@ dependencies {
     api 'com.miguelcatalan:materialsearchview:1.4.0'
 
     implementation 'com.android.support:design:27.1.1'
+
+    //added for notifications feature -> Currrently not in use
+    implementation "com.android.support:support-compat:27.1.1"
+
+    //Below: For Profile.java
+    //HY added this for the circular profile avatar
+    implementation 'de.hdodenhof:circleimageview:2.2.0'
+    //HY added this library for image cropping of profile avatar
+    implementation 'com.theartofdev.edmodo:android-image-cropper:2.7.+'
+    //HY added this library so that the update page of app will also display the image set by user
+    //previously
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
+    //Added this for the display of all users
+    // FirebaseUI for Firebase Realtime Database
+    implementation 'com.firebaseui:firebase-ui-database:4.0.1'
+    // FirebaseUI for Cloud Firestore
+    implementation 'com.firebaseui:firebase-ui-firestore:4.0.1'
+    // FirebaseUI for Firebase Auth
+    implementation 'com.firebaseui:firebase-ui-auth:4.0.1'
+    // FirebaseUI for Cloud Storage
+    implementation 'com.firebaseui:firebase-ui-storage:4.0.1'
+    //For Thumbnail
+    implementation 'id.zelory:compressor:2.1.0'
 }
 
 apply plugin: 'com.google.gms.google-services'
