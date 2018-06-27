@@ -3,23 +3,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
         <item
             android:id="@+id/profile"
-            android:title="View My Account"/>
+            android:title="View My Profile"/>
         app:showAsAction="always" />
         <item
             android:id="@+id/settings"
-            android:title="Update Profile Settings"/>
-        app:showAsAction="always" />
-
-        <item
-            android:id="@+id/Users_FreeLancers"
-            android:layout_width="match_parent"
-            android:title="All Freelancers"/>
+            android:title="Profile Settings"/>
         app:showAsAction="always" />
 
         <item
             android:id="@+id/Users_Clients"
             android:layout_width="match_parent"
-            android:title="All Clients"/>
+            android:title="All Users"/>
+        app:showAsAction="always" />
+
+        <item
+            android:id="@+id/New_Project_Listing"
+            android:layout_width="match_parent"
+            android:title="List a Project"/>
+        app:showAsAction="always" />
+
+        <item
+            android:id="@+id/Report"
+            android:layout_width="match_parent"
+            android:title="File a Report"/>
         app:showAsAction="always" />
 
         <item

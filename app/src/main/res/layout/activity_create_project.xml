@@ -35,7 +35,7 @@
                 android:layout_marginTop="8dp"
                 android:ems="10"
                 android:hint="Title"
-                android:inputType="textLongMessage|number" />
+                android:inputType="textLongMessage" />
 
             <EditText
                 android:id="@+id/editTextAbout"
@@ -45,7 +45,7 @@
                 android:layout_marginStart="8dp"
                 android:ems="10"
                 android:hint="About (Skills, Job Scope)"
-                android:inputType="textLongMessage"
+                android:inputType="textMultiLine|textLongMessage"
                 tools:layout_editor_absoluteY="186dp" />
 
             <EditText

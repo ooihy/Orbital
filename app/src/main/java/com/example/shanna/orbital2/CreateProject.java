@@ -65,7 +65,7 @@ public class CreateProject extends AppCompatActivity {
                 }
 
                 // check if phone number is of valid length
-                if (about.length() < 100) {
+                if (about.length() > 100) {
                     Toast.makeText(CreateProject.this, "You have exceeded the 100 characters limit for project description.", Toast.LENGTH_LONG).show();
                     return;
                 }

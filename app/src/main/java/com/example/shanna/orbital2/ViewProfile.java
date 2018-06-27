@@ -59,7 +59,7 @@ public class ViewProfile extends AppCompatActivity {
         setContentView(R.layout.activity_profile_view);
 
         //For the user_clients to lead to the correct ViewProfile
-        String user_id = getIntent().getStringExtra("user_id");
+        final String user_id = getIntent().getStringExtra("user_id");
         mDisplayID = (TextView) findViewById(R.id.profile_displayID);
         mDisplayID.setText(user_id);
 
@@ -124,7 +124,8 @@ public class ViewProfile extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //by right should lead to Chat.java. But currently Chat.java not done, so lead to Main
-                Intent intent = new Intent(ViewProfile.this, MainActivity.class);
+                Intent intent = new Intent(ViewProfile.this, Users_ProjectsList.class);
+                intent.putExtra("user_id", user_id);
                 startActivity(intent);
             }
         });

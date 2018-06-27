@@ -42,7 +42,8 @@
         <activity android:name=".Terms" />
         <activity android:name=".CreateProject" />
         <activity android:name=".ProjectDetails" />
-        <activity android:name=".AcceptRequest"></activity>
+        <activity android:name=".AcceptRequest" />
+        <activity android:name=".Users_ProjectsList"></activity>
     </application>
 
 </manifest>

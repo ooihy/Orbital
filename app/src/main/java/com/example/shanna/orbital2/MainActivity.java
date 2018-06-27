@@ -75,13 +75,17 @@ public class MainActivity extends AppCompatActivity {
                                 mDrawerLayout.closeDrawers();
                                 startActivity(new Intent(MainActivity.this, Profile.class));
                                 break;
-                            case R.id.Users_FreeLancers:
-                                mDrawerLayout.closeDrawers();
-                                startActivity(new Intent(MainActivity.this, Users_Freelancers.class));
-                                break;
                             case R.id.Users_Clients:
                                 mDrawerLayout.closeDrawers();
                                 startActivity(new Intent(MainActivity.this, Users_Clients.class));
+                                break;
+                            case R.id.New_Project_Listing:
+                                mDrawerLayout.closeDrawers();
+                                startActivity(new Intent(MainActivity.this, CreateProject.class));
+                                break;
+                            case R.id.Report:
+                                mDrawerLayout.closeDrawers();
+                                startActivity(new Intent(MainActivity.this, MainActivity.class));
                                 break;
                             case R.id.logout:
                                 mDrawerLayout.closeDrawers();
