@@ -56,11 +56,13 @@ public class MainActivity extends AppCompatActivity {
         //The 5 lines below is for toolbar.
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        //3 lines below is for the 3 horizontal lines for sliding drawer
         ActionBar actionbar = getSupportActionBar();
         actionbar.setDisplayHomeAsUpEnabled(true);
         actionbar.setHomeAsUpIndicator(R.drawable.ic_menu);
 
-        //2 lines below is for the 3 horizontal lines for sliding drawer
+
+
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(
                 new NavigationView.OnNavigationItemSelectedListener() {
@@ -69,7 +71,9 @@ public class MainActivity extends AppCompatActivity {
                         switch (menuItem.getItemId()) {
                             case R.id.profile:
                                 mDrawerLayout.closeDrawers();
-                                startActivity(new Intent(MainActivity.this, ViewProfile.class));
+                                Intent intent = new Intent(MainActivity.this, ViewProfile.class);
+                                intent.putExtra("user_id", FirebaseAuth.getInstance().getCurrentUser().getUid());
+                                startActivity(intent);
                                 break;
                             case R.id.settings: //for them to change their account details
                                 mDrawerLayout.closeDrawers();
@@ -149,10 +153,22 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
                 mDrawerLayout.openDrawer(GravityCompat.START);
+                return true;
+            case R.id.Search:
+                startActivity(new Intent(MainActivity.this, Search.class));
+                return true;
+            case R.id.Notifications:
+                startActivity(new Intent(MainActivity.this, MainActivity.class));
                 return true;
         }
         return super.onOptionsItemSelected(item);

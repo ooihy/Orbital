@@ -73,10 +73,10 @@ public class Users_ProjectsList extends AppCompatActivity {
 
         FirebaseRecyclerOptions<Projects> options =
                 new FirebaseRecyclerOptions.Builder<Projects>()
-                        .setQuery(query, Users_ProjectsList.class)
+                        .setQuery(query, Projects.class)
                         .build();
 
-        FirebaseRecyclerAdapter adapter = new FirebaseRecyclerAdapter<Users, UserViewHolder>(options) {
+        FirebaseRecyclerAdapter adapter = new FirebaseRecyclerAdapter<Projects, UserViewHolder>(options) {
             @Override
             public UserViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
                 // Create a new instance of the ViewHolder, in this case we are using a custom

@@ -81,13 +81,8 @@ public class ViewProfile extends AppCompatActivity {
         //Image -> Reference to Firebase storage root
         mStorageRef = FirebaseStorage.getInstance().getReference();
 
-        //User data -> Reference to Firebase database root
-        mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
-        //Get user_id
-        String current_uid = mCurrentUser.getUid();
-
         //first set the value inside the text boxes to contain information that was set previously
-        mDatabase.child("Users").child(current_uid).addValueEventListener(new ValueEventListener() {
+        mDatabase.child("Users").child(user_id).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 

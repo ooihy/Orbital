@@ -3,4 +3,6 @@
     <string name="open">Open</string>
     <string name="close">Close</string>
     <string name="display_name">Users</string>
+    <string name="search">MainActivity</string>
+    <string name="notification">MainActivity</string>
 </resources>

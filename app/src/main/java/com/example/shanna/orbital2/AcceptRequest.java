@@ -61,7 +61,7 @@ public class AcceptRequest extends AppCompatActivity {
         mBtnAccept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                
 
                 Intent intent = new Intent(AcceptRequest.this, MainActivity.class);
                 startActivity(intent);
