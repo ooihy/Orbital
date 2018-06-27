@@ -39,7 +39,10 @@
         <activity android:name=".Users_Clients" />
         <activity android:name=".Users_Freelancers" />
         <activity android:name=".Collaborate" />
-        <activity android:name=".Terms"></activity>
+        <activity android:name=".Terms" />
+        <activity android:name=".CreateProject" />
+        <activity android:name=".ProjectDetails" />
+        <activity android:name=".AcceptRequest"></activity>
     </application>
 
 </manifest>

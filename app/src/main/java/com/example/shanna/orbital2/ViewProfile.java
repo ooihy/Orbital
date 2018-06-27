@@ -46,7 +46,7 @@ public class ViewProfile extends AppCompatActivity {
 
 
     private RatingBar mRating;
-    private Button mCollab;
+    private Button mViewProjects;
 
     //Create storage reference in firebase
     private StorageReference mStorageRef;
@@ -59,7 +59,7 @@ public class ViewProfile extends AppCompatActivity {
         setContentView(R.layout.activity_profile_view);
 
         //For the user_clients to lead to the correct ViewProfile
-        final String user_id = getIntent().getStringExtra("user_id");
+        String user_id = getIntent().getStringExtra("user_id");
         mDisplayID = (TextView) findViewById(R.id.profile_displayID);
         mDisplayID.setText(user_id);
 
@@ -73,7 +73,7 @@ public class ViewProfile extends AppCompatActivity {
         mProfileEmail =  findViewById(R.id.profileEmail);
         mProfileWebsite =  findViewById(R.id.profileWebsite);
         mRating = findViewById(R.id.profileRating);
-        mCollab = findViewById(R.id.profileBtnCollaborate);
+        mViewProjects = findViewById(R.id.buttonViewProjects);
 
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
@@ -87,7 +87,7 @@ public class ViewProfile extends AppCompatActivity {
         String current_uid = mCurrentUser.getUid();
 
         //first set the value inside the text boxes to contain information that was set previously
-        mDatabase.child("Users").child(user_id).addValueEventListener(new ValueEventListener() {
+        mDatabase.child("Users").child(current_uid).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
@@ -120,12 +120,11 @@ public class ViewProfile extends AppCompatActivity {
 
 
         //When user click on chat -> Trigger chat activity
-        mCollab.setOnClickListener(new View.OnClickListener() {
+        mViewProjects.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //by right should lead to Chat.java. But currently Chat.java not done, so lead to Main
-                Intent intent = new Intent(ViewProfile.this, Collaborate.class);
-                intent.putExtra("user_id", user_id);
+                Intent intent = new Intent(ViewProfile.this, MainActivity.class);
                 startActivity(intent);
             }
         });

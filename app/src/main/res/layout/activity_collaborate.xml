@@ -29,13 +29,13 @@
         android:ems="10"
         android:hint="Max changes"
         android:inputType="number"
-        app:layout_constraintEnd_toStartOf="@+id/editText9"
+        app:layout_constraintEnd_toStartOf="@+id/editTextAbout"
         app:layout_constraintHorizontal_bias="0.926"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/header" />
 
     <EditText
-        android:id="@+id/editText7"
+        android:id="@+id/editTextDuration"
         android:layout_width="292dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -46,10 +46,10 @@
         android:inputType="date"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText9" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextAbout" />
 
     <EditText
-        android:id="@+id/editText8"
+        android:id="@+id/editTextPay"
         android:layout_width="287dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -61,7 +61,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText7" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextDuration" />
 
     <Button
         android:id="@+id/button2"
@@ -74,10 +74,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText8" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextPay" />
 
     <EditText
-        android:id="@+id/editText9"
+        android:id="@+id/editTextAbout"
         android:layout_width="138dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="44dp"
