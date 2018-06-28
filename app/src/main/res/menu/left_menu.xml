@@ -13,13 +13,20 @@
         <item
             android:id="@+id/Users_Clients"
             android:layout_width="match_parent"
-            android:title="All Users"/>
+            android:title="View All Users"/>
         app:showAsAction="always" />
 
         <item
             android:id="@+id/New_Project_Listing"
             android:layout_width="match_parent"
             android:title="List a Project"/>
+        app:showAsAction="always" />
+
+
+        <item
+            android:id="@+id/MyProjects"
+            android:layout_width="match_parent"
+            android:title="View My Projects"/>
         app:showAsAction="always" />
 
         <item

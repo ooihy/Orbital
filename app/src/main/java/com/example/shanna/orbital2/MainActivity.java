@@ -61,6 +61,14 @@ public class MainActivity extends AppCompatActivity {
         actionbar.setDisplayHomeAsUpEnabled(true);
         actionbar.setHomeAsUpIndicator(R.drawable.ic_menu);
 
+        //Creating Filter or search for list view
+
+
+
+
+
+
+
 
 
         NavigationView navigationView = findViewById(R.id.nav_view);
@@ -90,6 +98,14 @@ public class MainActivity extends AppCompatActivity {
                             case R.id.Report:
                                 mDrawerLayout.closeDrawers();
                                 startActivity(new Intent(MainActivity.this, MainActivity.class));
+                                break;
+                            case R.id.MyProjects:
+                                mDrawerLayout.closeDrawers();
+
+                                Intent myIntent = new Intent(MainActivity.this, Users_ProjectsList.class);
+                                myIntent.putExtra("user_id", FirebaseAuth.getInstance().getCurrentUser().getUid());
+                                startActivity(myIntent);
+                              //  startActivity(new Intent(MainActivity.this, Users_ProjectsList.class));
                                 break;
                             case R.id.logout:
                                 mDrawerLayout.closeDrawers();

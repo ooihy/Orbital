@@ -8,7 +8,7 @@
 
     <!-- We use a Toolbar -->
     <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar_clients"
+        android:id="@+id/toolbar_projects"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/holo_orange_dark"
@@ -25,7 +25,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/toolbar_clients"></android.support.v7.widget.RecyclerView>
+        app:layout_constraintTop_toTopOf="@+id/toolbar_projects"></android.support.v7.widget.RecyclerView>
 
 
 </android.support.constraint.ConstraintLayout>
