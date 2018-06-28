@@ -142,8 +142,11 @@ public class Profile extends AppCompatActivity {
                 mProgress.setTitle("Done");
                 mProgress.dismiss();
 
+
                 // if update information is successful, go to view Profile
-                startActivity(new Intent(Profile.this, ViewProfile.class));
+                Intent intent = new Intent(Profile.this, ViewProfile.class);
+                intent.putExtra("user_id", FirebaseAuth.getInstance().getCurrentUser().getUid());
+                startActivity(intent);
                 // End the activity
                 finish();
 
