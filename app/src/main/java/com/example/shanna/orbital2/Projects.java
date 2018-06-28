@@ -5,6 +5,7 @@ public class Projects {
     private String Title;
     private String About;
     private String thumb_image;
+    private String Owner;
 
     public Projects(){
 
@@ -38,6 +39,13 @@ public class Projects {
 
     public void setThumb_image(String Thumb_image) {
         this.thumb_image = Thumb_image;
+    }
+    public String getOwner() {
+        return Owner;
+    }
+
+    public void setOwner(String owner) {
+        Owner = owner;
     }
 }
 

@@ -82,7 +82,6 @@ public class Users_Clients extends AppCompatActivity {
 
                 Toast.makeText(Users_Clients.this,"For debugging: User id is " + user_id + " position is "+position, Toast.LENGTH_LONG).show();
 
-                //holder.mView.setOnClickListener(new View.OnClickListener(){
                 holder.mView.setOnClickListener(new View.OnClickListener(){
                     @Override
                     public void onClick(View v) {

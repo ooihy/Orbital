@@ -22,7 +22,6 @@
             android:title="List a Project"/>
         app:showAsAction="always" />
 
-
         <item
             android:id="@+id/MyProjects"
             android:layout_width="match_parent"

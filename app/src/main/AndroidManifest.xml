@@ -41,9 +41,11 @@
         <activity android:name=".Collaborate" />
         <activity android:name=".Terms" />
         <activity android:name=".CreateProject" />
-        <activity android:name=".ProjectDetails" />
+        <activity android:name=".ProjectDetails"
+            android:parentActivityName=".Users_ProjectsList"/>
         <activity android:name=".AcceptRequest" />
-        <activity android:name=".Users_ProjectsList"></activity>
+        <activity android:name=".Users_ProjectsList"
+            android:parentActivityName=".MainActivity" />
     </application>
 
 </manifest>

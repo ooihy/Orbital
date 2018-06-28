@@ -83,16 +83,22 @@ public class Users_ProjectsList extends AppCompatActivity {
                 holder.setAbout(model.getAbout());
                 //holder.setUserImage(model.getThumb_image());
 
-                final String user_id = getRef(position).getKey();
 
-                Toast.makeText(Users_ProjectsList.this,"For debugging: User id is " + user_id + " position is "+position, Toast.LENGTH_LONG).show();
+
+                final String owner_id = model.getOwner();
+                final String title = model.getTitle(); //project title
+
+                Toast.makeText(Users_ProjectsList.this,"For debugging: User id is " + owner_id + " position is "+position, Toast.LENGTH_LONG).show();
 
                 //holder.mView.setOnClickListener(new View.OnClickListener(){
                 holder.mView.setOnClickListener(new View.OnClickListener(){
                     @Override
                     public void onClick(View v) {
                         Intent profileIntent = new Intent(Users_ProjectsList.this, ProjectDetails.class);
-                        profileIntent.putExtra("user_id", user_id);
+                        //pass user id of the project that the current user clicked
+                        profileIntent.putExtra("Owner", owner_id);
+                        //need to pass the title of project too
+                        profileIntent.putExtra("Title", title);
                         startActivity(profileIntent);
                     }
                 });
