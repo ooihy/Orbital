@@ -29,6 +29,8 @@ public class Collaborate extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_collaborate);
 
@@ -82,6 +84,7 @@ public class Collaborate extends AppCompatActivity {
                 FirebaseDatabase.getInstance().getReference().child(owner_id).child("Deadline").setValue(deadline);
                 FirebaseDatabase.getInstance().getReference().child(owner_id).child("WaitingTime").setValue(bufferWait);
 
+
                /* projectMap.put("Partner", current_user.getEmail());
                 // add data to partner
                 final DatabaseReference mRef = FirebaseDatabase.getInstance().getReference().child("users");
@@ -98,7 +101,9 @@ public class Collaborate extends AppCompatActivity {
                     public void onCancelled(@NonNull DatabaseError databaseError) {
                         Toast.makeText(Collaborate.this, "Collaboration unsuccessful! Please try again.", Toast.LENGTH_LONG).show();
                     }
-                });*/
+                });
+
+                */
 
                 Toast.makeText(Collaborate.this, "Collaboration successful!", Toast.LENGTH_SHORT).show();
                // send notification to owner party (pass owner_id here)
@@ -107,5 +112,8 @@ public class Collaborate extends AppCompatActivity {
             }
 
         });
+
+
     }
+
 }

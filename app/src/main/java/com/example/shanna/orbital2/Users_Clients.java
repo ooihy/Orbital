@@ -42,7 +42,7 @@ public class Users_Clients extends AppCompatActivity {
 
         mToolbar = (Toolbar) findViewById(R.id.toolbar_clients);
         setSupportActionBar(mToolbar);
-        getSupportActionBar().setTitle("All Clients");
+        getSupportActionBar().setTitle("All Users");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mUsersDatabase = FirebaseDatabase.getInstance().getReference().child("Users");

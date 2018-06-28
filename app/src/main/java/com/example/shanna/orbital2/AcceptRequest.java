@@ -12,7 +12,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class AcceptRequest extends AppCompatActivity {
-
+/*
     private TextView mTextViewTitle;
     private TextView mTextViewChanges;
     private TextView mTextViewQuote;
@@ -68,4 +68,6 @@ public class AcceptRequest extends AppCompatActivity {
             }
         });
     }
+
+    */
 }

@@ -164,12 +164,12 @@ public class MainActivity extends AppCompatActivity {
             case android.R.id.home:
                 mDrawerLayout.openDrawer(GravityCompat.START);
                 return true;
-            case R.id.Search:
-                startActivity(new Intent(MainActivity.this, Search.class));
-                return true;
-            case R.id.Notifications:
-                startActivity(new Intent(MainActivity.this, MainActivity.class));
-                return true;
+        //    case R.id.Search:
+        //        startActivity(new Intent(MainActivity.this, Search.class));
+         //       return true;
+          //  case R.id.Notifications:
+          //      startActivity(new Intent(MainActivity.this, MainActivity.class));
+           //     return true;
         }
         return super.onOptionsItemSelected(item);
     }

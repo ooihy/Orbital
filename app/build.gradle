@@ -9,6 +9,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
     }
     buildTypes {
         release {
@@ -60,6 +61,10 @@ dependencies {
     implementation 'com.firebaseui:firebase-ui-storage:4.0.1'
     //For Thumbnail
     implementation 'id.zelory:compressor:2.1.0'
+
+
+    //added this because of oompilation error
+    implementation 'com.android.support:multidex:1.0.3'
 }
 
 apply plugin: 'com.google.gms.google-services'
