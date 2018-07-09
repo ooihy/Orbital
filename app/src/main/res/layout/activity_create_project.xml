@@ -36,7 +36,6 @@
                 android:ems="10"
                 android:hint="Title"
                 android:inputType="textLongMessage" />
-
             <EditText
                 android:id="@+id/editTextAbout"
                 android:layout_width="match_parent"
@@ -44,10 +43,9 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
                 android:ems="10"
-                android:hint="About (Skills, Job Scope)"
+                android:hint="About (Skills, Job Scope) "
                 android:inputType="textMultiLine|textLongMessage"
                 tools:layout_editor_absoluteY="186dp" />
-
             <EditText
                 android:id="@+id/editTextDuration"
                 android:layout_width="match_parent"
@@ -58,7 +56,6 @@
                 android:ems="10"
                 android:hint="Duration of work (DD/MM/YYYY - DD/MM/YYYY))"
                 android:inputType="date" />
-
             <EditText
                 android:id="@+id/editTextPay"
                 android:layout_width="match_parent"
@@ -67,9 +64,16 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="36dp"
                 android:ems="10"
-                android:hint="Pay"
-                android:inputType="number" />
-
+                android:hint="Pay" />
+            <EditText
+                android:id="@+id/editTextDateOfListing"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="36dp"
+                android:ems="10"
+                android:hint="Date of listing -> Today's date" />
             <Button
                 android:id="@+id/buttonPost"
                 android:layout_width="match_parent"

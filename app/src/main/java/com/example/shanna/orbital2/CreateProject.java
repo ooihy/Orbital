@@ -16,6 +16,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class CreateProject extends AppCompatActivity {
@@ -24,8 +25,16 @@ public class CreateProject extends AppCompatActivity {
     private EditText mEditTextAbout;
     private EditText mEditTextPay;
     private EditText mEditTextDuration;
+    private EditText mEditTextDateOfListing;
+
     private Button mBtnPost;
 
+    private String projectStatus = "Open"; //by default, all projects are set as open
+                                            //To be changed to closed and in progress when the deal is closed
+                                            //Change to completed when the job is completed
+                                            //Search for projects will then need to filter by this
+                                            //status so that it will only display projects that are
+                                            // current
     private DatabaseReference mUserDatabase;
     private FirebaseUser mCurrentUser;
 
@@ -38,6 +47,7 @@ public class CreateProject extends AppCompatActivity {
         mEditTextAbout = findViewById(R.id.editTextAbout);
         mEditTextPay = findViewById(R.id.editTextPay);
         mEditTextDuration = findViewById(R.id.editTextDuration);
+        mEditTextDateOfListing = findViewById(R.id.editTextDateOfListing);
         mBtnPost = findViewById(R.id.buttonPost);
 
         mBtnPost.setOnClickListener(new View.OnClickListener() {
@@ -47,6 +57,7 @@ public class CreateProject extends AppCompatActivity {
                 final String about = mEditTextAbout.getText().toString().trim(); //get from textbox
                 final String pay = mEditTextPay.getText().toString().trim(); //get from textbox
                 final String duration = mEditTextDuration.getText().toString().trim(); //get from textbox
+                final String dateOfListing = mEditTextDateOfListing.getText().toString().trim(); //get from textbox
 
                 mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
                 String current_uid = mCurrentUser.getUid();
@@ -82,18 +93,28 @@ public class CreateProject extends AppCompatActivity {
                     return;
                 }
 
+                // check if date of listing is empty
+                if (TextUtils.isEmpty(dateOfListing)) {
+                    Toast.makeText(CreateProject.this, "Enter Today's date.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 // project data
                 final HashMap<String, Object> projectMap = new HashMap<>();
+
                 projectMap.put("Owner", FirebaseAuth.getInstance().getCurrentUser().getUid());
                 projectMap.put("Title", title);
                 projectMap.put("About", about);
                 projectMap.put("Pay", pay);
                 projectMap.put("Duration", duration);
+                projectMap.put("DateOfListing", dateOfListing);
+                projectMap.put("ProjectStatus", projectStatus);
                 projectMap.put("Partner", "");
                 projectMap.put("MaxChanges", "");
                 projectMap.put("BaseQuote", "");
                 projectMap.put("Deadline", "");
                 projectMap.put("WaitingTime", "");
+                projectMap.put("CollaborationForms", new ArrayList<String>());
 
                 mUserDatabase.setValue(projectMap);
 
@@ -101,8 +122,6 @@ public class CreateProject extends AppCompatActivity {
                 finish();
             }
         });
-
-
 
 
     }

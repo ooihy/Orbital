@@ -1,5 +1,6 @@
 package com.example.shanna.orbital2;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,11 +10,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 
+import java.io.File;
 import java.util.HashMap;
 
 public class Collaborate extends AppCompatActivity {
@@ -26,6 +30,7 @@ public class Collaborate extends AppCompatActivity {
 
     private FirebaseAuth auth;
     private DatabaseReference mDatabase;
+    private DatabaseReference mNotificationDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,9 +45,13 @@ public class Collaborate extends AppCompatActivity {
         mEditTextWait = findViewById(R.id.editTextPay);
         mBtnCollaborate = findViewById(R.id.button2);
 
-        final String owner_id = getIntent().getStringExtra("owner_id");
+        final String owner_id = getIntent().getStringExtra("Owner");
+        final String title = getIntent().getStringExtra("Title");
 
         auth = FirebaseAuth.getInstance();
+
+        //notifications
+        mNotificationDatabase = FirebaseDatabase.getInstance().getReference().child("Notifications");
 
         // click to complete collaboration
         mBtnCollaborate.setOnClickListener(new View.OnClickListener() {
@@ -77,43 +86,65 @@ public class Collaborate extends AppCompatActivity {
                     return;
                 }
 
-                // store collab agreements in owner profile
-                FirebaseDatabase.getInstance().getReference().child(owner_id).child("Partner").setValue(auth.getCurrentUser().getUid());
-                FirebaseDatabase.getInstance().getReference().child(owner_id).child("MaxChanges").setValue(numChanges);
-                FirebaseDatabase.getInstance().getReference().child(owner_id).child("BaseQuote").setValue(baseQuotation);
-                FirebaseDatabase.getInstance().getReference().child(owner_id).child("Deadline").setValue(deadline);
-                FirebaseDatabase.getInstance().getReference().child(owner_id).child("WaitingTime").setValue(bufferWait);
+                //Update the project's owner file
+                //Under the project thread for that particular project, there is another sub-branch
+                //that states collabs -> Which in turn contain many other sub branches, to store all potential
+                //partner's collaborate form details -> So maybe the information can be displayed in the collabs
+                //fragment for notifications.
+                // store collab agreements details in owner profile
 
+                mDatabase =  FirebaseDatabase.getInstance().getReference().child("Users").child(owner_id)
+                        .child("Projects")
+                        .child(title)
+                        .child("CollaborationForms")
+                        .child(auth.getCurrentUser().getUid());
 
-               /* projectMap.put("Partner", current_user.getEmail());
-                // add data to partner
-                final DatabaseReference mRef = FirebaseDatabase.getInstance().getReference().child("users");
-                Query query = mRef.orderByChild("Email").equalTo(partner);
-                query.addListenerForSingleValueEvent(new ValueEventListener() {
+                final HashMap<String, Object> collabMap = new HashMap<>();
+
+                collabMap.put("Partner", auth.getCurrentUser().getUid());
+                collabMap.put("MaxChanges",numChanges);
+                collabMap.put("BaseQuote", baseQuotation);
+                collabMap.put("Deadline", deadline);
+                collabMap.put("WaitingTime", bufferWait);
+
+                mDatabase.setValue(collabMap);
+                mDatabase.setValue(collabMap).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        DatabaseReference database = FirebaseDatabase.getInstance().getReference();
-                        database.updateChildren(projectMap);
-                        Toast.makeText(Collaborate.this, "Collaboration successful!", Toast.LENGTH_SHORT).show();
-                    }
+                    public void onSuccess(Void aVoid) {
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-                        Toast.makeText(Collaborate.this, "Collaboration unsuccessful! Please try again.", Toast.LENGTH_LONG).show();
+                        //notification
+                        HashMap<String, String> notificationMap = new HashMap<>();
+                        notificationMap.put("Sender",auth.getCurrentUser().getUid());
+                        notificationMap.put("Type", "CollabRequest");
+                        //push will generate a random token id.
+
+                        mNotificationDatabase.child(owner_id).push().setValue(notificationMap).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                Toast.makeText(Collaborate.this, "Request for collaboration sent!", Toast.LENGTH_LONG).show();
+
+                            }
+                        });
+
+
+
+
+
+
+
+                        Intent here = new Intent(Collaborate.this, MainActivity.class);
+                        startActivity(here);
+                        finish();
                     }
                 });
 
-                */
 
-                Toast.makeText(Collaborate.this, "Collaboration successful!", Toast.LENGTH_SHORT).show();
-               // send notification to owner party (pass owner_id here)
-                startActivity(new Intent(Collaborate.this, MainActivity.class));
-                finish();
+
+
             }
+
 
         });
 
-
     }
-
 }

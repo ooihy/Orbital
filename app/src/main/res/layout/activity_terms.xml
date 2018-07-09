@@ -8,12 +8,14 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="71dp"
+        tools:layout_editor_absoluteY="0dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/textView"
@@ -29,30 +31,33 @@
 
             <TextView
                 android:id="@+id/textView2"
-                android:layout_width="match_parent"
-                android:layout_height="595dp"
+                android:layout_width="384dp"
+                android:layout_height="2300dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:text=" 1.(Scope of engagement) In the situation that the freelancer is involved in providing services for clients who happen to be business competitors, it is the responsibility of the freelancer to inform the clients of it and check if there is any exclusivity imposed on the freelancer to restrict the freelancer from working with any particular competitors. The freelancer needs to be aware of such terms which may limit his/her freedom to enter into contracts.
-        \n 2.(For services not based on man-hours or work-scope) (Payment Terms) Both the clients and freelancer have to come into agreement regarding payment issue. Once the amount has been specified on the first form that both clients and freelancer submit, it cannot be modified.
-        \n 3.(For services not based on man-hours or work-scope) (Payment Terms) Clients have to transfer payment to the app’s bank account before the agreement take place. Freelancer will only commence work upon receiving notification from the app that payment has been transferred by the client and received by the app administrators.
-        \n 4.(For services based on man-hours or work-scope) (Payment Terms) For any assignment that is dependent on the number of hours put in by the freelancer or involves the freelancer to purchase any additional materials as they embark on the assignment, clients and freelancer will need to agree upon the fixed base rate(minimum amount of payment that freelancer will receive). Clients will then need to transfer the amount to the app’s bank account. Freelancer will only commence work upon receiving notification from the app that payment has been transferred by the client and received by the app administrators. At the end of the contract, when both parties are satisfied, the client will again need to come to a consensus with the freelancer on the amount of additional payment to be made. They will then submit another form regarding the additional payment to be made. Similarly, clients will need to transfer the additional amount to the app’s bank account. Once the payment has been finalised, the app will then transfer the final amount to the freelancer.
-        \n 5.(For services based on man-hours or work-scope) (Payment Terms) In the event that the client refuses to pay for the additional payments without any justification, it will be deemed as a termination of the contract. Refer to rule number 10 and 11 on the termination of contract.
-        \n 6.(Payment issues) Please allow for 3-working days for the payments to be transferred to freelancer after the work agreement has ended.
-        \n 7.(Central Provident Fund (CPF) Contributions and Tax Liabilities) All freelancers are responsible for paying their CPF contributions and income tax. It is their duty to seek legal advice regarding whether they are required to declare their income earned from freelance work.
-        \n 8.(Intellectual Property Rights and Indemnity Clause) Freelancers are not allowed to plagiarise. If the client finds that the work of the freelancer contains plagiarism, the client has the right to file for a termination of contract. Refer to rule 10.
-         \n 9.(Intellectual Property Rights and Indemnity Clause) In the course of an assignment, if the freelancer gets injured, neither the client nor the app will hold any responsibility. Therefore, the freelancer will need to exercise precaution at all time and ensure that he/she has insurance coverage.
-        \n 10.(Termination of contract) Should any party choose to terminate the contract, they will need to re-submit a form to declare their reason for termination of contract. The app administrator will then look into the case and refunds will be made accordingly. Therefore, both freelancers and clients are urged to use the chat room to communicate and understand the nature of work involved before committing themselves to the work agreement.
-        \n 11.(Termination of contract) If the termination of contract is due to non-response from any of the party(1 week of non-response), then the initial payment made by the client will be refunded to the party who initiated the termination of the contract. However, sufficient proof must be submitted through the upload button of the form.
-        \n 12.(Other Terms) It is the responsibility of the freelancer to ensure that he/she is legally allowed to engage in freelance work when he/she is holds full employment elsewhere.
-        \n 13.(Other Terms) It is the responsibility of the client engaging the services of a freelancer to check if the freelancer holds a full-time job and is allowed to freelance to ensure that the client will not be accused of inducing a breach of contract between the freelancer and his/her employer.
-        \n 14.(Other Terms) The client and the freelancer have to decide on the maximum number of changes that the client can request of the freelancer at the start of the agreement. Freelancer reserves the right to refuse to make any modification to the work if the client exceeds the number of allowed request for modifications and if either party wishes to terminate the contract as such, refer to rule 10. The maximum number of changes may not be abided strictly if both the freelancer and client are agreeable.
-        \n 15.(Other Terms) Payment will be transferred to freelancer 3 days after deadline stated by both parties, if neither party displays breach of contract.
+                android:text="
+1.\n(Scope of engagement)\nIn the situation that the freelancer is involved in providing services for clients who happen to be business competitors, it is the responsibility of the freelancer to inform the clients of it and check if there is any exclusivity imposed on the freelancer to restrict the freelancer from working with any particular competitors. The freelancer needs to be aware of such terms which may limit his/her freedom to enter into contracts.
+        \n\n 2.\n(For services not based on man-hours or work-scope) (Payment Terms)\nBoth the clients and freelancer have to come into agreement regarding payment issue. Once the amount has been specified on the first form that both clients and freelancer submit, it cannot be modified.
+        \n\n 3.\n(For services not based on man-hours or work-scope) (Payment Terms)\nClients have to transfer payment to the app’s bank account before the agreement take place. Freelancer will only commence work upon receiving notification from the app that payment has been transferred by the client and received by the app administrators.
+        \n\n 4.\n(For services based on man-hours or work-scope) (Payment Terms)\nFor any assignment that is dependent on the number of hours put in by the freelancer or involves the freelancer to purchase any additional materials as they embark on the assignment, clients and freelancer will need to agree upon the fixed base rate(minimum amount of payment that freelancer will receive). Clients will then need to transfer the amount to the app’s bank account. Freelancer will only commence work upon receiving notification from the app that payment has been transferred by the client and received by the app administrators. At the end of the contract, when both parties are satisfied, the client will again need to come to a consensus with the freelancer on the amount of additional payment to be made. They will then submit another form regarding the additional payment to be made. Similarly, clients will need to transfer the additional amount to the app’s bank account. Once the payment has been finalised, the app will then transfer the final amount to the freelancer.
+        \n\n 5.\n(For services based on man-hours or work-scope) (Payment Terms)\nIn the event that the client refuses to pay for the additional payments without any justification, it will be deemed as a termination of the contract. Refer to rule number 10 and 11 on the termination of contract.
+        \n\n 6.\n(Payment issues)\nPlease allow for 3-working days for the payments to be transferred to freelancer after the work agreement has ended.
+        \n\n 7.\n(Central Provident Fund (CPF) Contributions and Tax Liabilities)\nAll freelancers are responsible for paying their CPF contributions and income tax. It is their duty to seek legal advice regarding whether they are required to declare their income earned from freelance work.
+        \n\n 8.\n(Intellectual Property Rights and Indemnity Clause)\nFreelancers are not allowed to plagiarise. If the client finds that the work of the freelancer contains plagiarism, the client has the right to file for a termination of contract. Refer to rule 10.
+        \n\n 9.\n(Intellectual Property Rights and Indemnity Clause)\nIn the course of an assignment, if the freelancer gets injured, neither the client nor the app will hold any responsibility. Therefore, the freelancer will need to exercise precaution at all time and ensure that he/she has insurance coverage.
+        \n\n 10.\n(Termination of contract)\nShould any party choose to terminate the contract, they will need to re-submit a form to declare their reason for termination of contract. The app administrator will then look into the case and refunds will be made accordingly. Therefore, both freelancers and clients are urged to use the chat room to communicate and understand the nature of work involved before committing themselves to the work agreement.
+        \n\n 11.\n(Termination of contract)\nIf the termination of contract is due to non-response from any of the party(1 week of non-response), then the initial payment made by the client will be refunded to the party who initiated the termination of the contract. However, sufficient proof must be submitted through the upload button of the form.
+        \n\n 12.\n(Other Terms)\nIt is the responsibility of the freelancer to ensure that he/she is legally allowed to engage in freelance work when he/she is holds full employment elsewhere.
+        \n\n 13.\n(Other Terms)\nIt is the responsibility of the client engaging the services of a freelancer to check if the freelancer holds a full-time job and is allowed to freelance to ensure that the client will not be accused of inducing a breach of contract between the freelancer and his/her employer.
+        \n\n 14.\n(Other Terms)\nThe client and the freelancer have to decide on the maximum number of changes that the client can request of the freelancer at the start of the agreement. Freelancer reserves the right to refuse to make any modification to the work if the client exceeds the number of allowed request for modifications and if either party wishes to terminate the contract as such, refer to rule 10. The maximum number of changes may not be abided strictly if both the freelancer and client are agreeable.
+        \n\n 15.\n(Other Terms)\nPayment will be transferred to freelancer 3 days after deadline stated by both parties, if neither party displays breach of contract.
+        \n\n
         "
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView" />
+                app:layout_constraintTop_toBottomOf="@+id/textView"
+                tools:layout_height="wrap_content" />
 
             <Button
                 android:id="@+id/button"

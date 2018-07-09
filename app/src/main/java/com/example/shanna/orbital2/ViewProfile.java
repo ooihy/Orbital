@@ -60,8 +60,6 @@ public class ViewProfile extends AppCompatActivity {
 
         //For the user_clients to lead to the correct ViewProfile
         final String user_id = getIntent().getStringExtra("user_id");
-        mDisplayID = (TextView) findViewById(R.id.profile_displayID);
-        mDisplayID.setText(user_id);
 
         mProfileDisplayImage = (CircleImageView)findViewById(R.id.profileAvatar);
         mProfileName =  findViewById(R.id.profileFullName);

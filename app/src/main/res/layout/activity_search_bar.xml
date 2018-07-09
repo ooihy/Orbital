@@ -4,34 +4,41 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Users_Clients">
+    tools:context=".SearchBar">
 
     <!-- We use a Toolbar -->
     <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar_projects"
-        android:layout_width="428dp"
-        android:layout_height="64dp"
+        android:id="@+id/toolbar_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/holo_orange_dark"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar" />
+
+    <EditText
+        android:id="@+id/search_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:background="@android:color/holo_orange_dark"
-        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        android:hint="Search for projects"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.7"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/clients_list"
+        android:id="@+id/searchRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="486dp"
-        android:layout_marginBottom="8dp"
+        android:layout_height="474dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="8dp"
+        android:scrollbars="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/toolbar_projects"></android.support.v7.widget.RecyclerView>
-
+        app:layout_constraintTop_toBottomOf="@+id/search_edit_text"
+        app:layout_constraintVertical_bias="0.0" />
 
 </android.support.constraint.ConstraintLayout>

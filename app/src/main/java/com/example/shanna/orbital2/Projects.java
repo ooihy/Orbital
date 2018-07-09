@@ -11,10 +11,11 @@ public class Projects {
 
     }
 
-    public Projects(String title, String about, String Thumb_image){
+    public Projects(String title, String about, String Thumb_image, String owner){
         this.Title = title;
         this.About = about;
         this.thumb_image=Thumb_image;
+        this.Owner=owner;
     }
 
     public String getTitle() {

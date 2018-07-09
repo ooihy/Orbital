@@ -88,7 +88,7 @@ public class Users_ProjectsList extends AppCompatActivity {
                 final String owner_id = model.getOwner();
                 final String title = model.getTitle(); //project title
 
-                Toast.makeText(Users_ProjectsList.this,"For debugging: User id is " + owner_id + " position is "+position, Toast.LENGTH_LONG).show();
+               // Toast.makeText(Users_ProjectsList.this,"For debugging: User id is " + owner_id + " position is "+position, Toast.LENGTH_LONG).show();
 
                 //holder.mView.setOnClickListener(new View.OnClickListener(){
                 holder.mView.setOnClickListener(new View.OnClickListener(){

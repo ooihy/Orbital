@@ -37,15 +37,16 @@
             android:name=".users_clients"
             android:parentActivityName=".MainActivity" />
         <activity android:name=".Users_Clients" />
-        <activity android:name=".Users_Freelancers" />
+        <activity android:name=".Users_Freelancers"
+            android:parentActivityName=".MainActivity"/>
         <activity android:name=".Collaborate" />
         <activity android:name=".Terms" />
         <activity android:name=".CreateProject" />
-        <activity android:name=".ProjectDetails"
-            android:parentActivityName=".Users_ProjectsList"/>
+        <activity android:name=".ProjectDetails" />
         <activity android:name=".AcceptRequest" />
-        <activity android:name=".Users_ProjectsList"
-            android:parentActivityName=".MainActivity" />
+        <activity android:name=".Users_ProjectsList" />
+        <activity android:name=".FileReport" />
+        <activity android:name=".SearchBar"></activity>
     </application>
 
 </manifest>

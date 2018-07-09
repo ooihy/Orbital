@@ -1,3 +1,6 @@
+//This one
+
+
 package com.example.shanna.orbital2;
 
 import android.app.NotificationChannel;
@@ -21,6 +24,8 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 
 
@@ -35,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     private Fragment fragment = null;
     private FragmentManager fragmentManager;
     private FragmentTransaction fragmentTransaction;
+    private EditText mEditTextSearch;
 
 
     @Override
@@ -42,6 +48,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homepage);
 
+        // search bar
+        mEditTextSearch = findViewById(R.id.editTextSearch);
+        mEditTextSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, SearchBar.class));
+            }
+        });
 
         mDrawerLayout = findViewById(R.id.drawer_layout);
 
@@ -60,15 +74,6 @@ public class MainActivity extends AppCompatActivity {
         ActionBar actionbar = getSupportActionBar();
         actionbar.setDisplayHomeAsUpEnabled(true);
         actionbar.setHomeAsUpIndicator(R.drawable.ic_menu);
-
-        //Creating Filter or search for list view
-
-
-
-
-
-
-
 
 
         NavigationView navigationView = findViewById(R.id.nav_view);
@@ -97,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
                                 break;
                             case R.id.Report:
                                 mDrawerLayout.closeDrawers();
-                                startActivity(new Intent(MainActivity.this, MainActivity.class));
+                                startActivity(new Intent(MainActivity.this, FileReport.class));
                                 break;
                             case R.id.MyProjects:
                                 mDrawerLayout.closeDrawers();

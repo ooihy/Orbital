@@ -5,16 +5,18 @@ public class Users {
     private String UserType;
     private String Description;
     private String thumb_image;
+    private String Image;
 
     public Users(){
 
     }
 
-    public Users(String fullName, String userType, String description, String Thumb_image){
+    public Users(String fullName, String userType, String description, String Thumb_image, String Image){
         this.FullName=fullName;
         this.UserType=userType;
         this.Description=description;
         this.thumb_image=Thumb_image;
+        this.Image=Image;
     }
 
     public String getFullName() {
@@ -47,5 +49,13 @@ public class Users {
 
     public void setThumb_image(String Thumb_image) {
         this.thumb_image = Thumb_image;
+    }
+
+    public String getImage() {
+        return Image;
+    }
+
+    public void setImage(String image) {
+        Image = image;
     }
 }

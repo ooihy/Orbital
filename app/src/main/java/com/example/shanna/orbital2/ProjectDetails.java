@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -25,7 +26,10 @@ public class ProjectDetails extends AppCompatActivity {
     private TextView mTextViewAbout;
     private TextView mTextViewPay;
     private TextView mTextViewDuration;
-    private Button mBtnCollaborate;
+    private TextView mTextViewDateOfListing;
+    private TextView mTextViewProjectStatus;
+
+    private Button mBtnContinue;
     private Button mBtnViewOwnerProfile;
 
     private DatabaseReference mDatabase;
@@ -45,20 +49,21 @@ public class ProjectDetails extends AppCompatActivity {
         mTextViewAbout = findViewById(R.id.textViewAbout);
         mTextViewPay = findViewById(R.id.textViewPay);
         mTextViewDuration = findViewById(R.id.textViewDuration);
-        mBtnCollaborate = findViewById(R.id.buttonCollaborate);
+        mTextViewDateOfListing = findViewById(R.id.textViewDateOfListing);
+        mTextViewProjectStatus = findViewById(R.id.textViewProjectStatus);
+        mBtnContinue = findViewById(R.id.buttonContinue);
         mBtnViewOwnerProfile = findViewById(R.id.buttonViewProfile);
 
 
         //Retrieve firebase database for the project from the project owner's profile
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
-
         //Current user data -> Reference to Firebase database root
         mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
         final String user_id = mCurrentUser.getUid();
 
 
-       // Below code is to retrive the database information and display project's details
+        // Below code is to retrieve the database information and display project's details
         mDatabase.child("Users")
                 .child(project_owner_id)
                 .child("Projects")
@@ -69,6 +74,8 @@ public class ProjectDetails extends AppCompatActivity {
                 mTextViewAbout.setText(dataSnapshot.child("About").getValue().toString());
                 mTextViewPay.setText(dataSnapshot.child("Pay").getValue().toString());
                 mTextViewDuration.setText(dataSnapshot.child("Duration").getValue().toString());
+                mTextViewDateOfListing.setText(dataSnapshot.child("DateOfListing").getValue().toString());
+                mTextViewProjectStatus.setText(dataSnapshot.child("ProjectStatus").getValue().toString());
             }
 
             @Override
@@ -79,11 +86,12 @@ public class ProjectDetails extends AppCompatActivity {
 
 
         //when user clicks collaborate, bring user to collaborate form
-        mBtnCollaborate.setOnClickListener(new View.OnClickListener() {
+        mBtnContinue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //first set the value inside the text boxes to contain information that was set previously
-                mDatabase.child("Users").child(user_id).child("Projects").child(project_title).addValueEventListener(new ValueEventListener() {
+                //first set the value inside the text boxes to contain information that was set previously by the project owner
+                mDatabase.child("Users").child(project_owner_id).child("Projects").child(project_title).addValueEventListener(new ValueEventListener() {
+
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
@@ -91,11 +99,12 @@ public class ProjectDetails extends AppCompatActivity {
                         mTextViewAbout.setText(dataSnapshot.child("About").getValue().toString());
                         mTextViewPay.setText(dataSnapshot.child("Pay").getValue().toString());
                         mTextViewDuration.setText(dataSnapshot.child("Duration").getValue().toString());
+                        mTextViewDateOfListing.setText(dataSnapshot.child("DateOfListing").getValue().toString());
+                        mTextViewProjectStatus.setText(dataSnapshot.child("ProjectStatus").getValue().toString());
 
-                        final String owner_id = dataSnapshot.child("Owner").getValue().toString();
                         Intent intent = new Intent(ProjectDetails.this, Collaborate.class);
-
-                        intent.putExtra("owner_id", owner_id);
+                        intent.putExtra("Owner", project_owner_id);
+                        intent.putExtra("Title", dataSnapshot.child("Title").getValue().toString());
                         startActivity(intent);
                     }
 
@@ -122,4 +131,5 @@ public class ProjectDetails extends AppCompatActivity {
 
 
     }
+
 }

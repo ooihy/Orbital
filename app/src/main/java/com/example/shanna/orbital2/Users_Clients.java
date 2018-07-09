@@ -1,5 +1,8 @@
 package com.example.shanna.orbital2;
 
+
+//Note that load thumb_image doesn't work. Currently loading image instead of thumb_image.
+
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -65,6 +68,7 @@ public class Users_Clients extends AppCompatActivity {
             public UserViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
                 // Create a new instance of the ViewHolder, in this case we are using a custom
                 // layout called R.layout.message for each item
+
                 View view = LayoutInflater.from(parent.getContext())
                         .inflate(R.layout.activity_users, parent, false);
 
@@ -76,11 +80,12 @@ public class Users_Clients extends AppCompatActivity {
                 // Bind the Chat object to the ChatHolder
                 holder.setName(model.getFullName());
                 holder.setDescription(model.getDescription());
-                holder.setUserImage(model.getThumb_image());
+               // holder.setUserImage(model.getThumb_image());
+                holder.setUserImage(model.getImage());
 
                 final String user_id = getRef(position).getKey();
 
-                Toast.makeText(Users_Clients.this,"For debugging: User id is " + user_id + " position is "+position, Toast.LENGTH_LONG).show();
+              //  Toast.makeText(Users_Clients.this,"For debugging: User id is " + user_id + " position is "+position, Toast.LENGTH_LONG).show();
 
                 holder.mView.setOnClickListener(new View.OnClickListener(){
                     @Override
@@ -113,14 +118,13 @@ public class Users_Clients extends AppCompatActivity {
             userDescription.setText(description);
         }
         //  public void setUserImage(String thumb_image) {
-        public void setUserImage(String thumb_image) {
+        public void setUserImage(String Image) {
             ImageView userImageView = mView.findViewById(R.id.single_image);
 
             //The commented code below works to upload an image...
-            //Picasso.get().load("https://i.imgur.com/tGbaZCY.jpg").placeholder(R.drawable.spaceman_1x).into(userImageView);
+           // Picasso.get().load("https://i.imgur.com/tGbaZCY.jpg").placeholder(R.drawable.spaceman_1x).into(userImageView);
 
-            //below:doesn't work
-            Picasso.get().load(thumb_image).placeholder(R.drawable.spaceman_1x).into(userImageView);
+            Picasso.get().load(Image).placeholder(R.drawable.spaceman_1x).into(userImageView);
         }
     }
 
