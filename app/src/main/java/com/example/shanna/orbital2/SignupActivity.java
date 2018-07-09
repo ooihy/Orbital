@@ -37,6 +37,8 @@ public class SignupActivity extends AppCompatActivity {
     private EditText mEditTextPhone;
     private EditText mEditTextUsername;
     private EditText mEditTextIC;
+    private EditText mEditTextEducation;
+    private EditText mEditTextWorkExperience;
     private Button mBtnRegister;
     private Button mBtnTandC;
 
@@ -55,6 +57,8 @@ public class SignupActivity extends AppCompatActivity {
         mEditTextUsername = findViewById(R.id.usernameEditText);
         mEditTextPhone = findViewById(R.id.phoneEditText);
         mEditTextIC = findViewById(R.id.icEditText);
+        mEditTextEducation = findViewById(R.id.EducationEditText);
+        mEditTextWorkExperience = findViewById(R.id.WorkExperienceEditText);
         mBtnRegister = findViewById(R.id.mBtnNext);
         mBtnTandC = findViewById(R.id.button3);
 
@@ -80,6 +84,8 @@ public class SignupActivity extends AppCompatActivity {
                 final String email = mEditTextEmail.getText().toString().trim(); //get from textbox
                 final String password = mEditTextPw.getText().toString().trim(); //get from textbox
                 final String ic = mEditTextIC.getText().toString().trim(); //get from textbox
+                final String education = mEditTextEducation.getText().toString().trim();
+                final String work = mEditTextWorkExperience.getText().toString().trim();
                 final CheckBox checkBox = (CheckBox) findViewById(R.id.checkBox);
 
                 // Check if email is empty
@@ -130,6 +136,18 @@ public class SignupActivity extends AppCompatActivity {
                     return;
                 }
 
+                // check if education is empty
+                if (TextUtils.isEmpty(education)) {
+                    Toast.makeText(SignupActivity.this, "Enter highest education level", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                // check if work experience is empty
+                if (TextUtils.isEmpty(work)) {
+                    Toast.makeText(SignupActivity.this, "Enter work experience. Put Nil if not applicable.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 if (!checkBox.isChecked()) {
                     Toast.makeText(SignupActivity.this, "Please agree to the Terms and Conditions", Toast.LENGTH_LONG).show();
                     return;
@@ -155,13 +173,15 @@ public class SignupActivity extends AppCompatActivity {
                                     userMap.put("PhoneNum", phoneNum);
                                     userMap.put("Email", email);
                                     userMap.put("Password", password);
+                                    userMap.put("WorkExperience", work);
+                                    userMap.put("Education", education);
                                     userMap.put("IC", ic);
                                     userMap.put("Image", "Enter Image");
-                                    userMap.put("Location", "Enter Location");
-                                    userMap.put("Profession", "Enter Profession");
-                                    userMap.put("Description", "Enter Description");
-                                    userMap.put("Website", "Enter Website");
-                                    userMap.put("UserType", "Enter UserType");
+                                    userMap.put("Location", "");
+                                    userMap.put("Profession", "");
+                                    userMap.put("Description", "");
+                                    userMap.put("Website", "");
+                                    userMap.put("UserType", "");
                                     userMap.put("Projects", new ArrayList<String>());
 
                                     mDatabase.setValue(userMap); //putting hashmap into the database for the particular user

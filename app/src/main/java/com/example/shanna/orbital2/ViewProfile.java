@@ -43,6 +43,8 @@ public class ViewProfile extends AppCompatActivity {
     private TextView mProfileWebsite;
     private TextView mProfilePhoneNum;
     private TextView mProfileEmail;
+    private TextView mProfileEducation;
+    private TextView mProfileWork;
 
 
     private RatingBar mRating;
@@ -70,9 +72,10 @@ public class ViewProfile extends AppCompatActivity {
         mProfilePhoneNum =  findViewById(R.id.profilePhoneNumber);
         mProfileEmail =  findViewById(R.id.profileEmail);
         mProfileWebsite =  findViewById(R.id.profileWebsite);
+        mProfileEducation = findViewById(R.id.Education);
+        mProfileWork = findViewById(R.id.WorkExperience);
         mRating = findViewById(R.id.profileRating);
         mViewProjects = findViewById(R.id.buttonViewProjects);
-
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
@@ -99,8 +102,8 @@ public class ViewProfile extends AppCompatActivity {
                 mProfilePhoneNum.setText(dataSnapshot.child("PhoneNum").getValue().toString());
                 mProfileEmail.setText(dataSnapshot.child("Email").getValue().toString());
                 mProfileWebsite.setText(dataSnapshot.child("Website").getValue().toString());
-
-
+                mProfileEducation.setText(dataSnapshot.child("Education").getValue().toString());
+                mProfileWork.setText(dataSnapshot.child("WorkExperience").getValue().toString());
 
             }
 
@@ -137,9 +140,7 @@ public class ViewProfile extends AppCompatActivity {
             }
         });
 */
-        //Need to add another button -> When user request for collab -> Lead to notification for
-        // the other user to know -> Maybe send a message on chat? So lead to chat activity with a
-        // preset message?
+
 
 
     }

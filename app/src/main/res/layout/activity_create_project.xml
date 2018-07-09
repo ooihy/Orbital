@@ -31,57 +31,57 @@
                 android:id="@+id/editTextTitle"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
                 android:ems="10"
                 android:hint="Title"
-                android:inputType="textLongMessage" />
-            <EditText
-                android:id="@+id/editTextAbout"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:ems="10"
-                android:hint="About (Skills, Job Scope) "
-                android:inputType="textMultiLine|textLongMessage"
-                tools:layout_editor_absoluteY="186dp" />
-            <EditText
-                android:id="@+id/editTextDuration"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="24dp"
-                android:ems="10"
-                android:hint="Duration of work (DD/MM/YYYY - DD/MM/YYYY))"
-                android:inputType="date" />
-            <EditText
-                android:id="@+id/editTextPay"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="36dp"
-                android:ems="10"
-                android:hint="Pay" />
+                android:inputType="textLongMessage"
+                tools:layout_editor_absoluteX="8dp"
+                tools:layout_editor_absoluteY="46dp" />
+
             <EditText
                 android:id="@+id/editTextDateOfListing"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="36dp"
                 android:ems="10"
-                android:hint="Date of listing -> Today's date" />
+                android:hint="Date of listing -> Today's date"
+                tools:layout_editor_absoluteX="8dp"
+                tools:layout_editor_absoluteY="324dp" />
+
+            <EditText
+                android:id="@+id/editTextAbout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:hint="About (Skills, Job Scope) "
+                android:inputType="textMultiLine|textLongMessage"
+                tools:layout_editor_absoluteX="8dp"
+                tools:layout_editor_absoluteY="91dp" />
+
+            <EditText
+                android:id="@+id/editTextDuration"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:hint="Duration of work (DD/MM/YYYY - DD/MM/YYYY))"
+                android:inputType="date"
+                tools:layout_editor_absoluteX="8dp"
+                tools:layout_editor_absoluteY="62dp" />
+
+            <EditText
+                android:id="@+id/editTextPay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Pay"
+                tools:layout_editor_absoluteX="8dp"
+                tools:layout_editor_absoluteY="242dp" />
+
             <Button
                 android:id="@+id/buttonPost"
                 android:layout_width="match_parent"
                 android:layout_height="41dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="88dp"
-                android:text="POST" />
+                android:text="POST"
+                tools:layout_editor_absoluteX="8dp"
+                tools:layout_editor_absoluteY="126dp" />
 
         </LinearLayout>
     </ScrollView>

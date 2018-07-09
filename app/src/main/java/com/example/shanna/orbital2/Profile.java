@@ -53,6 +53,8 @@ public class Profile extends AppCompatActivity {
     private EditText mEditTextWebsite;
     private EditText mEditTextPhoneNum;
     private EditText mEditTextEmail;
+    private EditText mEditTextEducation;
+    private EditText mEditTextWork;
     private Button mButtonDone;
     private Button mButtonUpload;
 
@@ -81,6 +83,8 @@ public class Profile extends AppCompatActivity {
         mEditTextPhoneNum = (EditText) findViewById(R.id.PhoneNumber);
         mEditTextDescription = (EditText) findViewById(R.id.AboutMe);
         mEditTextEmail = (EditText)findViewById(R.id.email);
+        mEditTextEducation = (EditText)findViewById(R.id.Education);
+        mEditTextWork = (EditText)findViewById(R.id.WorkExperience);
         mButtonDone = (Button)findViewById(R.id.btnDone);
         mButtonUpload = (Button)findViewById(R.id.btnUpload);
 
@@ -111,6 +115,9 @@ public class Profile extends AppCompatActivity {
                 mEditTextPhoneNum.setText(dataSnapshot.child("PhoneNum").getValue().toString());
                 mEditTextEmail.setText(dataSnapshot.child("Email").getValue().toString());
                 mEditTextDescription.setText(dataSnapshot.child("Description").getValue().toString());
+                mEditTextEducation.setText(dataSnapshot.child("Education").getValue().toString());
+                mEditTextWork.setText(dataSnapshot.child("WorkExperience").getValue().toString());
+
             }
 
             @Override
@@ -138,6 +145,8 @@ public class Profile extends AppCompatActivity {
                 mUserDatabase.child("PhoneNum").setValue(mEditTextPhoneNum.getText().toString());
                 mUserDatabase.child("Email").setValue(mEditTextEmail.getText().toString());
                 mUserDatabase.child("Description").setValue(mEditTextDescription.getText().toString());
+                mUserDatabase.child("Education").setValue(mEditTextEducation.getText().toString());
+                mUserDatabase.child("WorkExperience").setValue(mEditTextWork.getText().toString());
 
                 mProgress.setTitle("Done");
                 mProgress.dismiss();
