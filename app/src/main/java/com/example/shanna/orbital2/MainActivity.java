@@ -106,11 +106,15 @@ public class MainActivity extends AppCompatActivity {
                                 break;
                             case R.id.MyProjects:
                                 mDrawerLayout.closeDrawers();
-
                                 Intent myIntent = new Intent(MainActivity.this, Users_ProjectsList.class);
                                 myIntent.putExtra("user_id", FirebaseAuth.getInstance().getCurrentUser().getUid());
                                 startActivity(myIntent);
                               //  startActivity(new Intent(MainActivity.this, Users_ProjectsList.class));
+                                break;
+                                //Below is just for debugging
+                            case R.id.AcceptRequest:
+                                mDrawerLayout.closeDrawers();
+                                startActivity(new Intent(MainActivity.this, AcceptRequest.class));
                                 break;
                             case R.id.logout:
                                 mDrawerLayout.closeDrawers();

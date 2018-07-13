@@ -29,24 +29,29 @@
         <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat" /> <!-- optional (needed if default theme has no action bar) -->
-
-        <activity
-            android:name=".users_freelancers"
-            android:parentActivityName=".MainActivity" />
-        <activity
-            android:name=".users_clients"
-            android:parentActivityName=".MainActivity" />
+        <service
+            android:name=".FirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
         <activity android:name=".Users_Clients" />
-        <activity android:name=".Users_Freelancers"
-            android:parentActivityName=".MainActivity"/>
         <activity android:name=".Collaborate" />
         <activity android:name=".Terms" />
         <activity android:name=".CreateProject" />
-        <activity android:name=".ProjectDetails" />
-        <activity android:name=".AcceptRequest" />
+        <activity android:name=".ProjectDetails"
+            android:parentActivityName=".MainActivity"/>
+        <activity
+            android:name=".AcceptRequest"
+            android:launchMode="singleTask">
+            <intent-filter>
+                 <action android:name="com.example.shanna.orbital2_COLLAB_NOTIFICATION"></action>
+                <category android:name = "android.intent.category.DEFAULT"></category>
+            </intent-filter>
+        </activity>
         <activity android:name=".Users_ProjectsList" />
         <activity android:name=".FileReport" />
-        <activity android:name=".SearchBar"></activity>
+        <activity android:name=".SearchBar" />
     </application>
 
 </manifest>

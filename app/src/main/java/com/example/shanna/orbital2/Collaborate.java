@@ -112,35 +112,27 @@ public class Collaborate extends AppCompatActivity {
                     @Override
                     public void onSuccess(Void aVoid) {
 
-                        //notification
-                        HashMap<String, String> notificationMap = new HashMap<>();
+                        //notification -> To update the "Notifications" branch at firebase
+                        //This update in "Notifications" branch will trigger the notification to
+                        //be sent to the project's owner's device
+                        HashMap<String, Object> notificationMap = new HashMap<>();
                         notificationMap.put("Sender",auth.getCurrentUser().getUid());
                         notificationMap.put("Type", "CollabRequest");
-                        //push will generate a random token id.
+                        notificationMap.put("Draft", System.currentTimeMillis());
+                        notificationMap.put("ProjectTitle", title);
 
-                        mNotificationDatabase.child(owner_id).push().setValue(notificationMap).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        //push will generate a random token id.
+                        mNotificationDatabase.child(owner_id).child(title).setValue(notificationMap).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
                                 Toast.makeText(Collaborate.this, "Request for collaboration sent!", Toast.LENGTH_LONG).show();
-
+                                Intent here = new Intent(Collaborate.this, MainActivity.class);
+                                startActivity(here);
+                                finish();
                             }
-                        });
-
-
-
-
-
-
-
-                        Intent here = new Intent(Collaborate.this, MainActivity.class);
-                        startActivity(here);
-                        finish();
+                        }); //update notification branch
                     }
                 });
-
-
-
-
             }
 
 

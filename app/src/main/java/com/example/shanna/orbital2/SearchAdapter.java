@@ -76,7 +76,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
 
             @Override
             public void onClick(View v) {
-                Toast.makeText(context,"Loading ", Toast.LENGTH_LONG).show();
+              //  Toast.makeText(context,"Loading ", Toast.LENGTH_LONG).show();
                 Intent profileIntent = new Intent(context, ProjectDetails.class);
                 //pass user id of the project that the current user clicked
                 profileIntent.putExtra("Owner", ownerId);

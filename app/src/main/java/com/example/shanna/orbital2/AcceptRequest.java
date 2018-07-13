@@ -1,5 +1,6 @@
 package com.example.shanna.orbital2;
 
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -19,6 +20,9 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
 
+import static android.app.PendingIntent.getActivity;
+import static android.app.PendingIntent.readPendingIntentOrNullFromParcel;
+
 public class AcceptRequest extends AppCompatActivity {
 
     private TextView mTextViewTitle;
@@ -37,6 +41,7 @@ public class AcceptRequest extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_accept_request);
 
+
         mTextViewTitle = findViewById(R.id.textViewTitle);
         mTextViewChanges = findViewById(R.id.textViewChanges);
         mTextViewQuote = findViewById(R.id.textViewQuote);
@@ -45,15 +50,48 @@ public class AcceptRequest extends AppCompatActivity {
         mBtnReject = findViewById(R.id.buttonReject);
         mBtnAccept = findViewById(R.id.buttonAccept);
 
-
         mDatabase = FirebaseDatabase.getInstance().getReference();
         FirebaseUser current_user = FirebaseAuth.getInstance().getCurrentUser();
         final String owner_id = current_user.getUid();
-        final String project_title = getIntent().getStringExtra("project_title");
 
+        final String project_title = getIntent().getStringExtra("project_title");
+        final String CollabID = getIntent().getStringExtra("Sender");
+      //  Toast.makeText(AcceptRequest.this, "sender id is ->" + CollabID, Toast.LENGTH_SHORT).show();
+        onNewIntent(getIntent());
+
+    }
+
+
+    @Override
+    public void onNewIntent(Intent intent){
+        super.onNewIntent(intent);
+        Bundle extras = intent.getExtras();
+        if(extras != null){
+            if(extras.containsKey("Sender")) {
+                // extract the extra-data in the Notification
+                String msg = extras.getString("Sender");
+                Toast.makeText(AcceptRequest.this, "sender id is ->" + msg, Toast.LENGTH_SHORT).show();
+            }else{
+                Toast.makeText(AcceptRequest.this, "sender id is -> null ", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+
+    }
+
+
+
+/*
+        Toast.makeText(AcceptRequest.this, "sender id is" + CollabReqSender, Toast.LENGTH_SHORT).show();
 
         // display agreement details
-        mDatabase.child("Users").child(owner_id).child("Projects").child(project_title).addValueEventListener(new ValueEventListener() {
+        mDatabase.child("Users").child(owner_id)
+                                .child("Projects")
+                                .child(project_title)
+                                .child("CollaborationForms")
+                                .child(CollabReqSender)
+                                .addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 mTextViewTitle.setText(dataSnapshot.child("Title").getValue().toString());
@@ -68,6 +106,8 @@ public class AcceptRequest extends AppCompatActivity {
 
             }
         });
+*/
+        /*
 
         // collab rejected, delete agreement info from owner_id
         mBtnReject.setOnClickListener(new View.OnClickListener() {
@@ -130,6 +170,7 @@ public class AcceptRequest extends AppCompatActivity {
 
             }
         });
-    }
+        */
+
 }
 

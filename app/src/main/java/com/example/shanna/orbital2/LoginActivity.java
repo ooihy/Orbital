@@ -12,9 +12,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -23,6 +28,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText mEditTextPw;
     private Button mButtonLogin;
     private TextView mTextViewSignup;
+    private DatabaseReference mUserDatabase; //for notifications
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +37,9 @@ public class LoginActivity extends AppCompatActivity {
 
         //Firebase Auth Instance
         auth = FirebaseAuth.getInstance();
+
+        //notification
+        mUserDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
 
         //Initialise widgets
         mButtonLogin = findViewById(R.id.mButtonLogin);
@@ -70,6 +79,18 @@ public class LoginActivity extends AppCompatActivity {
                                     // error occurred
                                     Toast.makeText(LoginActivity.this, "Authentication Failed", Toast.LENGTH_SHORT).show();
                                 } else {
+
+                                    //For notification
+                                    final String current_user_id = auth.getCurrentUser().getUid();
+                                    FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener( LoginActivity.this,  new OnSuccessListener<InstanceIdResult>() {
+                                        @Override
+                                        public void onSuccess(InstanceIdResult instanceIdResult) {
+                                            String deviceToken = instanceIdResult.getToken();
+                                            mUserDatabase.child(current_user_id).child("device_token").setValue(deviceToken);
+
+                                        }
+                                    });
+
                                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                     startActivity(intent);
                                     finish();

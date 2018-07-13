@@ -33,6 +33,11 @@
             android:layout_width="match_parent"
             android:title="File a Report"/>
         app:showAsAction="always" />
+        <item
+            android:id="@+id/AcceptRequest"
+            android:layout_width="match_parent"
+            android:title="Accept request -> TO delete"/>
+        app:showAsAction="always" />
 
         <item
             android:id="@+id/logout"

@@ -16,12 +16,15 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
@@ -41,6 +44,8 @@ public class SignupActivity extends AppCompatActivity {
     private EditText mEditTextWorkExperience;
     private Button mBtnRegister;
     private Button mBtnTandC;
+
+    private DatabaseReference mUserDatabase; //for notifications
 
     private FirebaseAuth auth;
     private DatabaseReference mDatabase;
@@ -62,6 +67,8 @@ public class SignupActivity extends AppCompatActivity {
         mBtnRegister = findViewById(R.id.mBtnNext);
         mBtnTandC = findViewById(R.id.button3);
 
+        //notification
+        mUserDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
 
         // Firebase Auth Instance
         auth = FirebaseAuth.getInstance();
@@ -186,6 +193,17 @@ public class SignupActivity extends AppCompatActivity {
 
                                     mDatabase.setValue(userMap); //putting hashmap into the database for the particular user
 
+                                    //For notification
+                                    final String current_user_id = auth.getCurrentUser().getUid();
+                                    FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener( SignupActivity.this,  new OnSuccessListener<InstanceIdResult>() {
+                                        @Override
+                                        public void onSuccess(InstanceIdResult instanceIdResult) {
+                                            String deviceToken = instanceIdResult.getToken();
+                                            mUserDatabase.child(current_user_id).child("device_token").setValue(deviceToken);
+
+                                        }
+                                    });
+                                    
                                     // Signup successful, go to main activity
                                     startActivity(new Intent(SignupActivity.this, MainActivity.class));
                                     // End the activity
