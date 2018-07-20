@@ -5,11 +5,22 @@
     android:layout_height="match_parent"
     tools:context=".PartnersFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:text="Collabs" />
+        android:text="Partners" />
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/Partners_list"
+        android:layout_width="match_parent"
+        android:layout_height="486dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="56dp"
+        />
+
 
 </FrameLayout>

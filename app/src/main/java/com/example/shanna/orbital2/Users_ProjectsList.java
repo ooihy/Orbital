@@ -80,7 +80,7 @@ public class Users_ProjectsList extends AppCompatActivity {
             protected void onBindViewHolder(UserViewHolder holder, int position, Projects model) {
                 // Bind the Chat object to the ChatHolder
                 holder.setTitle(model.getTitle());
-                holder.setAbout(model.getAbout());
+                holder.setProjectSummary(model.getProjectSummary());
                 //holder.setUserImage(model.getThumb_image());
 
 
@@ -120,20 +120,10 @@ public class Users_ProjectsList extends AppCompatActivity {
             TextView titleView = (TextView) mView.findViewById(R.id.textViewTitle);
             titleView.setText(title);
         }
-        public void setAbout(String about){
-            TextView aboutView = (TextView) mView.findViewById(R.id.textViewAbout);
-            aboutView.setText(about);
+        public void setProjectSummary(String projectSummary){
+            TextView aboutView = (TextView) mView.findViewById(R.id.textViewProjectSummary);
+            aboutView.setText(projectSummary);
         }
-        //  public void setUserImage(String thumb_image) {
-        /*public void setUserImage(String thumb_image) {
-            ImageView userImageView = mView.findViewById(R.id.single_image);
-
-            //The commented code below works to upload an image...
-            //Picasso.get().load("https://i.imgur.com/tGbaZCY.jpg").placeholder(R.drawable.spaceman_1x).into(userImageView);
-
-            //below:doesn't work
-            Picasso.get().load(thumb_image).placeholder(R.drawable.spaceman_1x).into(userImageView);
-        }*/
     }
 
 

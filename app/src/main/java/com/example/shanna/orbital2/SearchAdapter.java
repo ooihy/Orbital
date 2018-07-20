@@ -27,8 +27,8 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
 
     class SearchViewHolder extends RecyclerView.ViewHolder {
 
-       TextView about, title, owner;
-       ImageView image;
+        TextView about, title, owner;
+        ImageView image;
 
         public SearchViewHolder(View itemView) {
             super(itemView);
@@ -69,14 +69,14 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
         final String title = titleList.get(position);
         final String ownerId = ownerList.get(position);
 
-      //  Toast.makeText(context,"id is "+ownerId, Toast.LENGTH_LONG).show();
-      //  Toast.makeText(context,"Title is "+ title, Toast.LENGTH_LONG).show();
+        //  Toast.makeText(context,"id is "+ownerId, Toast.LENGTH_LONG).show();
+        //  Toast.makeText(context,"Title is "+ title, Toast.LENGTH_LONG).show();
 
         holder.itemView.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View v) {
-              //  Toast.makeText(context,"Loading ", Toast.LENGTH_LONG).show();
+                //  Toast.makeText(context,"Loading ", Toast.LENGTH_LONG).show();
                 Intent profileIntent = new Intent(context, ProjectDetails.class);
                 //pass user id of the project that the current user clicked
                 profileIntent.putExtra("Owner", ownerId);
@@ -99,4 +99,3 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
     }
 
 }
-

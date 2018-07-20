@@ -114,7 +114,7 @@ public class SearchBar extends AppCompatActivity {
                     Iterable<DataSnapshot> innerDataSnapshot = snapshot.child("Projects").getChildren();
 
                     for (DataSnapshot innerSnap : innerDataSnapshot) {
-                        String about = innerSnap.child("About").getValue().toString();
+                        String about = innerSnap.child("ProjectSummary").getValue().toString();
                         String title = innerSnap.child("Title").getValue().toString();
                         String owner = innerSnap.child("Owner").getValue().toString();
 
@@ -139,6 +139,5 @@ public class SearchBar extends AppCompatActivity {
             }
         });
 
-        //Toast.makeText(SearchBar.this, aboutList.isEmpty() ? "List is empty." : "not empty :)", Toast.LENGTH_SHORT).show();
     }
 }

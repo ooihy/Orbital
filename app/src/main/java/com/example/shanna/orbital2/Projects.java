@@ -3,18 +3,16 @@ package com.example.shanna.orbital2;
 public class Projects {
 
     private String Title;
-    private String About;
-    private String thumb_image;
+    private String ProjectSummary;
     private String Owner;
 
     public Projects(){
 
     }
 
-    public Projects(String title, String about, String Thumb_image, String owner){
+    public Projects(String title, String projectSummary, String owner){
         this.Title = title;
-        this.About = about;
-        this.thumb_image=Thumb_image;
+        this.ProjectSummary = projectSummary;
         this.Owner=owner;
     }
 
@@ -26,21 +24,14 @@ public class Projects {
         Title = title;
     }
 
-    public String getAbout() {
-        return About;
+    public String getProjectSummary() {
+        return ProjectSummary;
     }
 
-    public void setAbout(String about) {
-        About = about;
+    public void setProjectSummary(String projectSummary) {
+        ProjectSummary = projectSummary;
     }
 
-    public String getThumb_image() {
-        return thumb_image;
-    }
-
-    public void setThumb_image(String Thumb_image) {
-        this.thumb_image = Thumb_image;
-    }
     public String getOwner() {
         return Owner;
     }

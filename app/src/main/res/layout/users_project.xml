@@ -23,7 +23,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textViewAbout"
+        android:id="@+id/textViewProjectSummary"
         android:layout_width="263dp"
         android:layout_height="48dp"
         android:layout_marginBottom="8dp"
@@ -38,7 +38,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewTitle"
         app:layout_constraintVertical_bias="1.0" />
-
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/ProjectImage"
@@ -55,6 +54,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.866" />
-
 
 </android.support.constraint.ConstraintLayout>

@@ -112,10 +112,10 @@ public class MainActivity extends AppCompatActivity {
                               //  startActivity(new Intent(MainActivity.this, Users_ProjectsList.class));
                                 break;
                                 //Below is just for debugging
-                            case R.id.AcceptRequest:
-                                mDrawerLayout.closeDrawers();
-                                startActivity(new Intent(MainActivity.this, AcceptRequest.class));
-                                break;
+                          //  case R.id.AcceptRequest:
+                           //     mDrawerLayout.closeDrawers();
+                           //     startActivity(new Intent(MainActivity.this, AcceptRequest.class));
+                           //     break;
                             case R.id.logout:
                                 mDrawerLayout.closeDrawers();
                                 userLogout();
@@ -128,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
                 });
 
 
-        //Tabs -> Partners, Chats, Requests
+        //Tabs -> Partners, Requests
 
         mTabLayout=(TabLayout)findViewById(R.id.tabLayout);
         frameLayout=(FrameLayout)findViewById(R.id.content_frame);
@@ -148,9 +148,6 @@ public class MainActivity extends AppCompatActivity {
                         fragment = new PartnersFragment();
                         break;
                     case 1:
-                        fragment = new ChatsFragment();
-                        break;
-                    case 2:
                         fragment = new RequestFragment();
                         break;
                     default:
@@ -175,6 +172,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+
+
     }
 
     @Override
@@ -189,12 +188,6 @@ public class MainActivity extends AppCompatActivity {
             case android.R.id.home:
                 mDrawerLayout.openDrawer(GravityCompat.START);
                 return true;
-        //    case R.id.Search:
-        //        startActivity(new Intent(MainActivity.this, Search.class));
-         //       return true;
-          //  case R.id.Notifications:
-          //      startActivity(new Intent(MainActivity.this, MainActivity.class));
-           //     return true;
         }
         return super.onOptionsItemSelected(item);
     }

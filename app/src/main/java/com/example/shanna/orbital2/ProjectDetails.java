@@ -23,7 +23,9 @@ import com.squareup.picasso.Picasso;
 public class ProjectDetails extends AppCompatActivity {
 
     private TextView mTextViewTitle;
-    private TextView mTextViewAbout;
+    private TextView mTextViewSummary;
+    private TextView mTextViewResponsibilities;
+    private TextView mTextViewQualifications;
     private TextView mTextViewPay;
     private TextView mTextViewDuration;
     private TextView mTextViewDateOfListing;
@@ -41,12 +43,13 @@ public class ProjectDetails extends AppCompatActivity {
         setContentView(R.layout.activity_project_details);
 
         //Passed from the previous page -> Users_ProjectList
-        //final String project_title = getIntent().getStringExtra("project_title");
         final String project_title = getIntent().getStringExtra("Title");
         final String project_owner_id = getIntent().getStringExtra("Owner");
 
-        mTextViewTitle = findViewById(R.id.textViewTitle);
-        mTextViewAbout = findViewById(R.id.textViewAbout);
+        mTextViewTitle = findViewById(R.id.titleHeader);
+        mTextViewSummary = findViewById(R.id.textViewProjectSummary);
+        mTextViewResponsibilities = findViewById(R.id.textViewResponsibilities);
+        mTextViewQualifications = findViewById(R.id.textViewQualifications);
         mTextViewPay = findViewById(R.id.textViewPay);
         mTextViewDuration = findViewById(R.id.textViewDuration);
         mTextViewDateOfListing = findViewById(R.id.textViewDateOfListing);
@@ -71,7 +74,9 @@ public class ProjectDetails extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 mTextViewTitle.setText(dataSnapshot.child("Title").getValue().toString());
-                mTextViewAbout.setText(dataSnapshot.child("About").getValue().toString());
+                mTextViewSummary.setText(dataSnapshot.child("ProjectSummary").getValue().toString());
+                mTextViewQualifications.setText(dataSnapshot.child("ProjectQualifications").getValue().toString());
+                mTextViewResponsibilities.setText(dataSnapshot.child("ProjectResponsibilities").getValue().toString());
                 mTextViewPay.setText(dataSnapshot.child("Pay").getValue().toString());
                 mTextViewDuration.setText(dataSnapshot.child("Duration").getValue().toString());
                 mTextViewDateOfListing.setText(dataSnapshot.child("DateOfListing").getValue().toString());
@@ -96,7 +101,9 @@ public class ProjectDetails extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                         mTextViewTitle.setText(dataSnapshot.child("Title").getValue().toString());
-                        mTextViewAbout.setText(dataSnapshot.child("About").getValue().toString());
+                        mTextViewSummary.setText(dataSnapshot.child("ProjectSummary").getValue().toString());
+                        mTextViewQualifications.setText(dataSnapshot.child("ProjectQualifications").getValue().toString());
+                        mTextViewResponsibilities.setText(dataSnapshot.child("ProjectResponsibilities").getValue().toString());
                         mTextViewPay.setText(dataSnapshot.child("Pay").getValue().toString());
                         mTextViewDuration.setText(dataSnapshot.child("Duration").getValue().toString());
                         mTextViewDateOfListing.setText(dataSnapshot.child("DateOfListing").getValue().toString());

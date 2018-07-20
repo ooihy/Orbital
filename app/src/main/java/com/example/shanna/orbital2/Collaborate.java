@@ -2,6 +2,7 @@ package com.example.shanna.orbital2;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -13,130 +14,160 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import java.io.File;
 import java.util.HashMap;
 
 public class Collaborate extends AppCompatActivity {
 
-    private EditText mEditTextChanges;
-    private EditText mEditTextQuote;
-    private EditText mEditTextDeadline;
+    private EditText mEditTextPay;
+    private EditText mEditTextDuration;
+    private EditText mEditTextMaxChanges;
     private EditText mEditTextWait;
+    private EditText mEditTextRequestListingDate;
     private Button mBtnCollaborate;
 
     private FirebaseAuth auth;
-    private DatabaseReference mDatabase;
+    private DatabaseReference mDatabaseClone;
     private DatabaseReference mNotificationDatabase;
+    private DatabaseReference mSenderFullName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_collaborate);
+        setContentView(R.layout.activity_collaborate_form);
 
-        mEditTextChanges = findViewById(R.id.editText6);
-        mEditTextQuote = findViewById(R.id.editTextAbout);
-        mEditTextDeadline = findViewById(R.id.editTextDuration);
-        mEditTextWait = findViewById(R.id.editTextPay);
+        mEditTextPay = findViewById(R.id.editTextPay);
+        mEditTextDuration = findViewById(R.id.editTextDuration);
+        mEditTextMaxChanges = findViewById(R.id.editTextMaxChanges);
+        mEditTextWait = findViewById(R.id.editTextWait);
+        mEditTextRequestListingDate = findViewById(R.id.editTextRequestListingDate);
         mBtnCollaborate = findViewById(R.id.button2);
 
+        //Previous page was ProjectDetails.java
         final String owner_id = getIntent().getStringExtra("Owner");
         final String title = getIntent().getStringExtra("Title");
 
         auth = FirebaseAuth.getInstance();
 
-        //notifications
-        mNotificationDatabase = FirebaseDatabase.getInstance().getReference().child("Notifications");
-
         // click to complete collaboration
         mBtnCollaborate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final String numChanges = mEditTextChanges.getText().toString().trim(); //get from textbox
-                final String baseQuotation = mEditTextQuote.getText().toString().trim(); //get from textbox
-                final String deadline = mEditTextDeadline.getText().toString().trim(); //get from textbox
-                final String bufferWait = mEditTextWait.getText().toString().trim(); //get from textbox
-
-                // check if changes is empty
-                if (TextUtils.isEmpty(numChanges)) {
-                    Toast.makeText(Collaborate.this, "Enter max number of changes", Toast.LENGTH_SHORT).show();
-                    return;
-                }
+                final String pay = mEditTextPay.getText().toString().trim(); //get from textbox
+                final String duration = mEditTextDuration.getText().toString().trim(); //get from textbox
+                final String maxChanges = mEditTextMaxChanges.getText().toString().trim(); //get from textbox
+                final String wait = mEditTextWait.getText().toString().trim(); //get from textbox
+                final String requestDate = mEditTextRequestListingDate.getText().toString().trim();
 
                 // check if quotation is empty
-                if (TextUtils.isEmpty(baseQuotation)) {
+                if (TextUtils.isEmpty(pay)) {
                     Toast.makeText(Collaborate.this, "Enter base quotation", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 // check if phone number is empty
-                if (TextUtils.isEmpty(deadline)) {
-                    Toast.makeText(Collaborate.this, "Enter collaboration deadline", Toast.LENGTH_SHORT).show();
+                if (TextUtils.isEmpty(duration)) {
+                    Toast.makeText(Collaborate.this, "Enter collaboration duration", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                // check if changes is empty
+                if (TextUtils.isEmpty(maxChanges)) {
+                    Toast.makeText(Collaborate.this, "Enter max number of changes", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 // check if password is empty
-                if (TextUtils.isEmpty(bufferWait)) {
+                if (TextUtils.isEmpty(wait)) {
                     Toast.makeText(Collaborate.this, "Enter buffer time for response", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                //Update the project's owner file
-                //Under the project thread for that particular project, there is another sub-branch
-                //that states collabs -> Which in turn contain many other sub branches, to store all potential
-                //partner's collaborate form details -> So maybe the information can be displayed in the collabs
-                //fragment for notifications.
-                // store collab agreements details in owner profile
+                // check if today's date is empty
+                if (TextUtils.isEmpty(requestDate)) {
+                    Toast.makeText(Collaborate.this, "Enter today's date", Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
-                mDatabase =  FirebaseDatabase.getInstance().getReference().child("Users").child(owner_id)
-                        .child("Projects")
-                        .child(title)
-                        .child("CollaborationForms")
-                        .child(auth.getCurrentUser().getUid());
+                //notification -> To update the "Notifications" branch at firebase
+                //This update in "Notifications" branch will trigger the notification to
+                //be sent to the project's owner's device
+                HashMap<String, Object> notificationMap = new HashMap<>();
+                notificationMap.put("Sender", auth.getCurrentUser().getUid());
+                notificationMap.put("Type", "CollabRequest");
+                notificationMap.put("Time", System.currentTimeMillis());
+                notificationMap.put("ProjectTitle", title);
 
-                final HashMap<String, Object> collabMap = new HashMap<>();
 
-                collabMap.put("Partner", auth.getCurrentUser().getUid());
-                collabMap.put("MaxChanges",numChanges);
-                collabMap.put("BaseQuote", baseQuotation);
-                collabMap.put("Deadline", deadline);
-                collabMap.put("WaitingTime", bufferWait);
+                //notifications
+                mNotificationDatabase = FirebaseDatabase.getInstance().getReference().child("Notifications").child(owner_id).child(title);
 
-                mDatabase.setValue(collabMap);
-                mDatabase.setValue(collabMap).addOnSuccessListener(new OnSuccessListener<Void>() {
+                mNotificationDatabase.setValue(notificationMap).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
 
-                        //notification -> To update the "Notifications" branch at firebase
-                        //This update in "Notifications" branch will trigger the notification to
-                        //be sent to the project's owner's device
-                        HashMap<String, Object> notificationMap = new HashMap<>();
-                        notificationMap.put("Sender",auth.getCurrentUser().getUid());
-                        notificationMap.put("Type", "CollabRequest");
-                        notificationMap.put("Draft", System.currentTimeMillis());
-                        notificationMap.put("ProjectTitle", title);
+                        //Update AllCollabsRequest branch -> Same level as Users
+                        mDatabaseClone = FirebaseDatabase.getInstance().getReference()
+                                .child("AllCollabsReq")  //Another branch of the same level as Users
+                                .child(owner_id)
+                                .child(title + auth.getCurrentUser().getUid());
 
-                        //push will generate a random token id.
-                        mNotificationDatabase.child(owner_id).child(title).setValue(notificationMap).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        mSenderFullName = FirebaseDatabase.getInstance().getReference()
+                                .child("Users")
+                                .child(auth.getCurrentUser().getUid());
+                        //.child("FullName");
+
+
+                        ////////Get the value of the sender's name -> Only onDataChange method can obtain value of key from firebase
+                        //We want sender's full name so that we can display on requestFragment for project owner side
+                        mSenderFullName.addValueEventListener(new ValueEventListener() {
                             @Override
-                            public void onSuccess(Void aVoid) {
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                                String senderName = dataSnapshot.child("FullName").getValue().toString();
+
+                                // Toast.makeText(Collaborate.this, senderName, Toast.LENGTH_LONG).show();
+
+                                final HashMap<String, Object> collabMapClone = new HashMap<>();
+
+                                collabMapClone.put("Pay", pay);
+                                collabMapClone.put("Duration", duration);
+                                collabMapClone.put("BufferWait", wait);
+                                collabMapClone.put("MaxChanges", maxChanges);
+                                collabMapClone.put("DateOfRequest", requestDate);
+                                collabMapClone.put("Partner", auth.getCurrentUser().getUid());
+                                collabMapClone.put("SenderFullName", senderName);
+                                collabMapClone.put("Title", title);
+
+                                mDatabaseClone.setValue(collabMapClone);
+
                                 Toast.makeText(Collaborate.this, "Request for collaboration sent!", Toast.LENGTH_LONG).show();
                                 Intent here = new Intent(Collaborate.this, MainActivity.class);
                                 startActivity(here);
                                 finish();
+
                             }
-                        }); //update notification branch
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                            }
+                        });
                     }
-                });
+                }); //update notification branch
             }
-
-
         });
+
 
     }
 }

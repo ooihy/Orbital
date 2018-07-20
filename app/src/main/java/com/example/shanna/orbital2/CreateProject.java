@@ -22,10 +22,13 @@ import java.util.HashMap;
 public class CreateProject extends AppCompatActivity {
 
     private EditText mEditTextTitle;
-    private EditText mEditTextAbout;
+    private EditText mEditTextProjectSummary;
+    private EditText mEditTextQualifications;
+    private EditText mEditTextResponsibilities;
     private EditText mEditTextPay;
     private EditText mEditTextDuration;
     private EditText mEditTextDateOfListing;
+
 
     private Button mBtnPost;
 
@@ -44,7 +47,9 @@ public class CreateProject extends AppCompatActivity {
         setContentView(R.layout.activity_create_project);
 
         mEditTextTitle = findViewById(R.id.editTextTitle);
-        mEditTextAbout = findViewById(R.id.editTextAbout);
+        mEditTextProjectSummary = findViewById(R.id.editTextProjectSummary);
+        mEditTextQualifications = findViewById(R.id.editTextQualifications);
+        mEditTextResponsibilities = findViewById(R.id.editTextResponsibilities);
         mEditTextPay = findViewById(R.id.editTextPay);
         mEditTextDuration = findViewById(R.id.editTextDuration);
         mEditTextDateOfListing = findViewById(R.id.editTextDateOfListing);
@@ -53,8 +58,11 @@ public class CreateProject extends AppCompatActivity {
         mBtnPost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 final String title = mEditTextTitle.getText().toString().trim(); //get from textbox
-                final String about = mEditTextAbout.getText().toString().trim(); //get from textbox
+                final String projectSummary = mEditTextProjectSummary.getText().toString().trim(); //get from textbox
+                final String qualifications = mEditTextQualifications.getText().toString().trim();
+                final String responsibilities = mEditTextResponsibilities.getText().toString().trim();
                 final String pay = mEditTextPay.getText().toString().trim(); //get from textbox
                 final String duration = mEditTextDuration.getText().toString().trim(); //get from textbox
                 final String dateOfListing = mEditTextDateOfListing.getText().toString().trim(); //get from textbox
@@ -70,14 +78,26 @@ public class CreateProject extends AppCompatActivity {
                 }
 
                 // check if quotation is empty
-                if (TextUtils.isEmpty(about)) {
+                if (TextUtils.isEmpty(projectSummary)) {
                     Toast.makeText(CreateProject.this, "Enter short description about project.", Toast.LENGTH_LONG).show();
                     return;
                 }
 
                 // check if phone number is of valid length
-                if (about.length() > 100) {
-                    Toast.makeText(CreateProject.this, "You have exceeded the 100 characters limit for project description.", Toast.LENGTH_LONG).show();
+                if (projectSummary.length() > 500) {
+                    Toast.makeText(CreateProject.this, "You have exceeded the 500 characters limit for project description.", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
+                // check if qualifications is empty
+                if (TextUtils.isEmpty(qualifications)) {
+                    Toast.makeText(CreateProject.this, "Enter qualifications and skills required.", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
+                // check if responsibilities is empty
+                if (TextUtils.isEmpty(responsibilities)) {
+                    Toast.makeText(CreateProject.this, "Enter responsibilities and duties of the position.", Toast.LENGTH_LONG).show();
                     return;
                 }
 
@@ -103,18 +123,18 @@ public class CreateProject extends AppCompatActivity {
                 final HashMap<String, Object> projectMap = new HashMap<>();
 
                 projectMap.put("Owner", FirebaseAuth.getInstance().getCurrentUser().getUid());
+                projectMap.put("Partner", " ");
                 projectMap.put("Title", title);
-                projectMap.put("About", about);
+                projectMap.put("ProjectSummary", projectSummary);
+                projectMap.put("ProjectQualifications", qualifications);
+                projectMap.put("ProjectResponsibilities", responsibilities);
                 projectMap.put("Pay", pay);
                 projectMap.put("Duration", duration);
+                projectMap.put("BufferWait", "");
+                projectMap.put("MaxChanges", "");
+                projectMap.put("DateOfRequest", "");
                 projectMap.put("DateOfListing", dateOfListing);
                 projectMap.put("ProjectStatus", projectStatus);
-                projectMap.put("Partner", "");
-                projectMap.put("MaxChanges", "");
-                projectMap.put("BaseQuote", "");
-                projectMap.put("Deadline", "");
-                projectMap.put("WaitingTime", "");
-                projectMap.put("CollaborationForms", new ArrayList<String>());
 
                 mUserDatabase.setValue(projectMap);
 

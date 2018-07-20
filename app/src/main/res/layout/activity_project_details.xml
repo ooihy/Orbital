@@ -7,216 +7,199 @@
     tools:context=".ProjectDetails">
 
 
-    <TextView
-        android:id="@+id/textView14"
-        android:layout_width="103dp"
-        android:layout_height="24dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="56dp"
-        android:text="Project's Status"
-        android:textColor="@android:color/holo_blue_dark"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.014"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
-
-    <TextView
-        android:id="@+id/textViewProjectStatus"
-        android:layout_width="235dp"
-        android:layout_height="41dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="28dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.227"
-        app:layout_constraintStart_toEndOf="@+id/textView14"
-        app:layout_constraintTop_toBottomOf="@+id/textViewAbout" />
-
-    <TextView
-        android:id="@+id/textViewTitle"
-        android:layout_width="256dp"
-        android:layout_height="56dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:textColor="@android:color/holo_green_dark"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:textSize="@dimen/fui_auth_method_button_width" />
-
-    <TextView
-        android:id="@+id/textViewAbout"
-        android:layout_width="244dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="8dp"
-        android:inputType="textMultiLine"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.179" />
-
-    <TextView
-        android:id="@+id/textViewPay"
-        android:layout_width="233dp"
-        android:layout_height="38dp"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.712"
-        app:layout_constraintStart_toEndOf="@+id/textView11"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.701" />
-
-    <TextView
-        android:id="@+id/textViewDuration"
-        android:layout_width="237dp"
-        android:layout_height="39dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.885"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.58" />
-
-    <TextView
-        android:id="@+id/textViewDateOfListing"
-        android:layout_width="235dp"
-        android:layout_height="42dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="220dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.928"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.06" />
-
-    <Button
-        android:id="@+id/buttonContinue"
-        android:layout_width="126dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:text="Continue"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/buttonViewProfile" />
-
-    <TextView
-        android:id="@+id/textViewInfo"
-        android:layout_width="344dp"
-        android:layout_height="64dp"
-        android:layout_marginBottom="64dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:inputType="textMultiLine"
-        android:text="Please contact post owner to discuss project agreements before proceeding to collaboration form."
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.333"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:textColor="@android:color/holo_blue_dark" />
-
-    <Button
-        android:id="@+id/buttonViewProfile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="8dp"
-        android:text="view owner profile"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="wrap_content"
-        android:layout_height="22dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="About:"
-        android:textColor="@android:color/holo_blue_dark"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/textViewAbout"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.17" />
-
-    <TextView
-        android:id="@+id/textView11"
-        android:layout_width="45dp"
-        android:layout_height="24dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
-        android:text="Pay:"
-        android:textColor="@android:color/holo_blue_dark"
-        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.683" />
+        app:layout_constraintVertical_bias="1.0"
+        tools:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/textView12"
-        android:layout_width="58dp"
-        android:layout_height="24dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Duration:"
-        android:textColor="@android:color/holo_blue_dark"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.05"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.563" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textView13"
-        android:layout_width="113dp"
-        android:layout_height="34dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="220dp"
-        android:text="Date of Project Listing"
-        android:textColor="@android:color/holo_blue_dark"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.029" />
+            <TextView
+                android:id="@+id/titleHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:hint="Project Title"
+                android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large" />
+
+            <TextView
+                android:id="@+id/textViewProjectStatusHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="\n\nProject Status: "
+                android:textColor="@color/fui_bgPhone"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textViewProjectStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Project Status: "
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textViewDateOfListingHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="\nDate of project listing: "
+                android:textColor="@color/fui_bgPhone"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textViewDateOfListing"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Date of project listing "
+                tools:layout_editor_absoluteX="8dp"
+                tools:layout_editor_absoluteY="324dp" />
+
+
+            <TextView
+                android:id="@+id/textViewProjectSummmaryHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="\nProject summary: "
+                android:textColor="@color/fui_bgPhone"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textViewProjectSummary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Overview of your company/project."
+                android:inputType="textMultiLine|textLongMessage"
+                tools:layout_editor_absoluteX="8dp"
+                tools:layout_editor_absoluteY="91dp" />
+
+            <TextView
+                android:id="@+id/textViewResponsibilitiesHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="\nResponsibilities and duties: "
+                android:textColor="@color/fui_bgPhone"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textViewResponsibilities"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Responsibilities."
+                android:inputType="textMultiLine|textLongMessage"
+                tools:layout_editor_absoluteX="8dp"
+                tools:layout_editor_absoluteY="91dp" />
+
+            <TextView
+                android:id="@+id/textViewQualificationsHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="\nQualifications and skills: "
+                android:textColor="@color/fui_bgPhone"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textViewQualifications"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Qualifications"
+                android:inputType="textMultiLine|textLongMessage"
+                tools:layout_editor_absoluteX="8dp"
+                tools:layout_editor_absoluteY="91dp" />
+
+            <TextView
+                android:id="@+id/textViewDurationHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="\nDuration of project: "
+                android:textColor="@color/fui_bgPhone"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textViewDuration"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="(DD/MM/YYYY - DD/MM/YYYY)"
+                android:inputType="date"
+                tools:layout_editor_absoluteX="8dp"
+                tools:layout_editor_absoluteY="62dp" />
+
+
+            <TextView
+                android:id="@+id/textViewPayHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="\nMinimum amount of pay: "
+                android:textColor="@color/fui_bgPhone"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textViewPay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Base quotation(Pay)."
+                tools:layout_editor_absoluteX="8dp"
+                tools:layout_editor_absoluteY="242dp" />
+
+
+            <TextView
+                android:id="@+id/textViewInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="64dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:text="\n\nPlease contact post owner to discuss project agreements before proceeding to collaboration form."
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.333"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:textColor="@color/colorAccent" />
+
+            <Button
+                android:id="@+id/buttonContinue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:text="Continue"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/buttonViewProfile" />
+
+            <Button
+                android:id="@+id/buttonViewProfile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginStart="8dp"
+                android:text="view owner profile"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+        </LinearLayout>
+    </ScrollView>
+
+
 </android.support.constraint.ConstraintLayout>
