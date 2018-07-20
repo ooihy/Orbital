@@ -111,10 +111,9 @@ public class MainActivity extends AppCompatActivity {
                                 startActivity(myIntent);
                               //  startActivity(new Intent(MainActivity.this, Users_ProjectsList.class));
                                 break;
-                                //Below is just for debugging
-                          //  case R.id.AcceptRequest:
-                           //     mDrawerLayout.closeDrawers();
-                           //     startActivity(new Intent(MainActivity.this, AcceptRequest.class));
+                          //  case R.id.DoneProject:
+                          //     mDrawerLayout.closeDrawers();
+                           //    startActivity(new Intent(MainActivity.this, DoneProject.class));
                            //     break;
                             case R.id.logout:
                                 mDrawerLayout.closeDrawers();

@@ -36,7 +36,7 @@
         </service>
 
         <activity android:name=".Users_Clients" />
-        <activity android:name=".Collaborate"/>
+        <activity android:name=".Collaborate" />
         <activity android:name=".Terms" />
         <activity android:name=".CreateProject" />
         <activity
@@ -58,11 +58,19 @@
             android:name=".AcceptRequest"
             android:excludeFromRecents="true"
             android:launchMode="singleTask"
-            android:taskAffinity=""></activity>
+            android:taskAffinity="" />
+
+
+        <activity
+            android:name=".make_payment"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:taskAffinity="" />
 
         <activity android:name=".Users_ProjectsList" />
         <activity android:name=".FileReport" />
         <activity android:name=".SearchBar" />
+
     </application>
 
 </manifest>

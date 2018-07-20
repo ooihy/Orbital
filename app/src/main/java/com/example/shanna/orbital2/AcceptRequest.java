@@ -273,9 +273,36 @@ public class AcceptRequest extends AppCompatActivity {
 
 
                 ///////////////////////////////////////////////////////////////////////////////////////////////////
+                Intent intent = new Intent(AcceptRequest.this, make_payment.class);
+                startActivity(intent);
+                finish();
+
+
+            }
+        });
+
+        //Update the rejected collabs
+        //Then lead user to the main page
+        mBtnReject.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                //Update a new branch called rejectCollabReq -> Same level as Users
+                DatabaseReference rejectBtn = FirebaseDatabase.getInstance().getReference().child("RejectedCollabReq").child(project_title+partnerID);
+
+                HashMap<String, String> map = new HashMap<>();
+
+                map.put("RejectedSenderID", partnerID);
+                map.put("RejectedSenderFullName", senderFullName);
+                map.put("ProjectOwnerID", owner_id);
+                map.put("ProjectTitle", project_title);
+
+                rejectBtn.setValue(map);
+
                 Intent intent = new Intent(AcceptRequest.this, MainActivity.class);
                 startActivity(intent);
                 finish();
+
 
 
             }
